@@ -1,0 +1,4 @@
+_delay_loop: CODE, 1974 0 20
+_main: CODE, 1994 0 50
+__initialization: CODE, 2044 0 0
+Total: 70
