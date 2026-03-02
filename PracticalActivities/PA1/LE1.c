@@ -17,8 +17,8 @@ void delay_loop(void) {
 
 void main(void) {
     ADCON1 = 0x07;   // Configure all PORTA pins as digital I/O
-    TRISB = 0x00;    // PORTD output (LED on RD0)
-    TRISA = 0x01;    // RA0 input (button)
+    TRISB = 0x00;   
+    TRISA = 0x01;   
 	PORTB = 0X00;
 
     while(1) {
