@@ -1462,6 +1462,7 @@ instCtrl(0x80);
 void dataCtrl(unsigned char b)
 {
 PORTB=b;
+
 RC0=1;
 RC2=0;
 RC1=1;
@@ -1469,12 +1470,10 @@ for(j=0;j<100;j++);
 RC1=0;
 }
 
-void main(void)
-{
+void main(void){
 
 TRISB = 0X00;
 TRISC = 0X00;
-TRISD = 0XFF;
 
 
 initLCD();
@@ -1485,7 +1484,7 @@ dataCtrl('L');
 dataCtrl('L');
 dataCtrl('O');
 dataCtrl('!');
-while(1)
-;
+while(1);
+
 }
 

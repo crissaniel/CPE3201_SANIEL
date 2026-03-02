@@ -17,7 +17,7 @@
 
 int j;
 
-void instCtrl(unsigned char data)
+void instCtrl(unsigned char data) //take data input from initLCD
 {
     PORTB= data;
     RS=0;
@@ -41,31 +41,30 @@ void initLCD()
 void dataCtrl(unsigned char b)
 {
     PORTB=b;
-    RS=1;
-    RW=0;
-    EN=1;
+	//write mode
+    RS=1; //data signal
+    RW=0; //write mode
+    EN=1; //strobe high
     delay;
-    EN=0;
+    EN=0; //strobe low
 }
 
-void main(void)
- {
-    
-    TRISB = 0X00;
-    TRISC = 0X00;
-    TRISD = 0XFF;
-    
-    // Intializing LCD
-    initLCD();
-   instCtrl(0xC6);
-   dataCtrl('H');
-   dataCtrl('E');
-   dataCtrl('L');
-   dataCtrl('L');
-   dataCtrl('O');
-   dataCtrl('!');
-    while(1)
-       ;
+void main(void){
+
+TRISB = 0X00;
+TRISC = 0X00;
+
+// Intializing LCD
+initLCD();
+instCtrl(0xC6);
+dataCtrl('H');
+dataCtrl('E');
+dataCtrl('L');
+dataCtrl('L');
+dataCtrl('O');
+dataCtrl('!');
+while(1);
+
  }
 
  

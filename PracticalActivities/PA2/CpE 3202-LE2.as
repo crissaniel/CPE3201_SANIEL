@@ -177,8 +177,6 @@ _RC2	set	0x3A
 _TRISB	set	0x86
 	global	_TRISC
 _TRISC	set	0x87
-	global	_TRISD
-_TRISD	set	0x88
 psect	text0,local,class=CODE,delta=2,merge=1
 ; #config settings
 	file	"C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f877a.h"
@@ -358,7 +356,7 @@ dataCtrl@b:	; 1 bytes @ 0x0
 
 ;; *************** function _main *****************
 ;; Defined at:
-;;		line 51 in file "Z:\CPE3201_SANIEL\PracticalActivities\PA2\LE2-1.c"
+;;		line 52 in file "Z:\CPE3201_SANIEL\PracticalActivities\PA2\LE2-1.c"
 ;; Parameters:    Size  Location     Type
 ;;		None
 ;; Auto vars:     Size  Location     Type
@@ -388,12 +386,12 @@ dataCtrl@b:	; 1 bytes @ 0x0
 ;;
 psect	maintext,global,class=CODE,delta=2,split=1
 	file	"Z:\CPE3201_SANIEL\PracticalActivities\PA2\LE2-1.c"
-	line	51
+	line	52
 global __pmaintext
 __pmaintext:	;psect for function _main
 psect	maintext
 	file	"Z:\CPE3201_SANIEL\PracticalActivities\PA2\LE2-1.c"
-	line	51
+	line	52
 	global	__size_of_main
 	__size_of_main	equ	__end_of_main-_main
 	
@@ -403,7 +401,7 @@ _main:
 ; Regs used in _main: [wreg+status,2+status,0+btemp+1+pclath+cstack]
 	line	54
 	
-l530:	
+l528:	
 ;LE2-1.c: 54: TRISB = 0X00;
 	bsf	status, 5	;RP0=1, select bank1
 	bcf	status, 6	;RP1=0, select bank1
@@ -411,74 +409,65 @@ l530:
 	line	55
 ;LE2-1.c: 55: TRISC = 0X00;
 	clrf	(135)^080h	;volatile
-	line	56
+	line	58
 	
-l532:	
-;LE2-1.c: 56: TRISD = 0XFF;
-	movlw	(0FFh)
-	movwf	(136)^080h	;volatile
+l530:	
+;LE2-1.c: 58: initLCD();
+	fcall	_initLCD
 	line	59
 	
-l534:	
-;LE2-1.c: 59: initLCD();
-	fcall	_initLCD
-	line	60
-	
-l536:	
-;LE2-1.c: 60: instCtrl(0xC6);
+l532:	
+;LE2-1.c: 59: instCtrl(0xC6);
 	movlw	(0C6h)
 	fcall	_instCtrl
+	line	60
+	
+l534:	
+;LE2-1.c: 60: dataCtrl('H');
+	movlw	(048h)
+	fcall	_dataCtrl
 	line	61
 	
-l538:	
-;LE2-1.c: 61: dataCtrl('H');
-	movlw	(048h)
+l536:	
+;LE2-1.c: 61: dataCtrl('E');
+	movlw	(045h)
 	fcall	_dataCtrl
 	line	62
 	
-l540:	
-;LE2-1.c: 62: dataCtrl('E');
-	movlw	(045h)
+l538:	
+;LE2-1.c: 62: dataCtrl('L');
+	movlw	(04Ch)
 	fcall	_dataCtrl
 	line	63
 	
-l542:	
+l540:	
 ;LE2-1.c: 63: dataCtrl('L');
 	movlw	(04Ch)
 	fcall	_dataCtrl
 	line	64
 	
-l544:	
-;LE2-1.c: 64: dataCtrl('L');
-	movlw	(04Ch)
+l542:	
+;LE2-1.c: 64: dataCtrl('O');
+	movlw	(04Fh)
 	fcall	_dataCtrl
 	line	65
 	
-l546:	
-;LE2-1.c: 65: dataCtrl('O');
-	movlw	(04Fh)
-	fcall	_dataCtrl
-	line	66
-	
-l548:	
-;LE2-1.c: 66: dataCtrl('!');
+l544:	
+;LE2-1.c: 65: dataCtrl('!');
 	movlw	(021h)
 	fcall	_dataCtrl
-	line	67
-;LE2-1.c: 67: while(1)
+	line	66
+;LE2-1.c: 66: while(1);
+	
+l30:	
+	
+l31:	
+	goto	l30
 	
 l32:	
 	line	68
-;LE2-1.c: 68: ;
 	
 l33:	
-	line	67
-	goto	l32
-	
-l34:	
-	line	69
-	
-l35:	
 	global	start
 	ljmp	start
 	opt stack 0
@@ -532,7 +521,7 @@ _initLCD:
 ; Regs used in _initLCD: [wreg+status,2+status,0+btemp+1+pclath+cstack]
 	line	32
 	
-l510:	
+l508:	
 ;LE2-1.c: 32: instCtrl(0x38);
 	movlw	(038h)
 	fcall	_instCtrl
@@ -562,7 +551,7 @@ l510:
 	fcall	_instCtrl
 	line	39
 	
-l24:	
+l22:	
 	return
 	opt stack 0
 GLOBAL	__end_of_initLCD
@@ -617,7 +606,7 @@ _instCtrl:
 	movwf	(instCtrl@data)
 	line	22
 	
-l492:	
+l490:	
 ;LE2-1.c: 22: PORTB= data;
 	movf	(instCtrl@data),w
 	bcf	status, 5	;RP0=0, select bank0
@@ -625,27 +614,27 @@ l492:
 	movwf	(6)	;volatile
 	line	23
 	
-l494:	
+l492:	
 ;LE2-1.c: 23: RC0=0;
 	bcf	(56/8),(56)&7	;volatile
 	line	24
 	
-l496:	
+l494:	
 ;LE2-1.c: 24: RC2=0;
 	bcf	(58/8),(58)&7	;volatile
 	line	25
 	
-l498:	
+l496:	
 ;LE2-1.c: 25: RC1=1;
 	bsf	(57/8),(57)&7	;volatile
 	line	26
 	
-l500:	
+l498:	
 ;LE2-1.c: 26: for(j=0;j<100;j++);
 	clrf	(_j)
 	clrf	(_j+1)
 	
-l502:	
+l500:	
 	movf	(_j+1),w
 	xorlw	80h
 	movwf	btemp+1
@@ -661,16 +650,16 @@ u15:
 	goto	u11
 	goto	u10
 u11:
-	goto	l506
+	goto	l504
 u10:
-	goto	l20
+	goto	l18
+	
+l502:	
+	goto	l18
+	
+l17:	
 	
 l504:	
-	goto	l20
-	
-l19:	
-	
-l506:	
 	movlw	low(01h)
 	addwf	(_j),f
 	skipnc
@@ -678,7 +667,7 @@ l506:
 	movlw	high(01h)
 	addwf	(_j+1),f
 	
-l508:	
+l506:	
 	movf	(_j+1),w
 	xorlw	80h
 	movwf	btemp+1
@@ -694,10 +683,10 @@ u25:
 	goto	u21
 	goto	u20
 u21:
-	goto	l506
+	goto	l504
 u20:
 	
-l20:	
+l18:	
 	line	27
 ;LE2-1.c: 27: RC1=0;
 	bcf	status, 5	;RP0=0, select bank0
@@ -705,7 +694,7 @@ l20:
 	bcf	(57/8),(57)&7	;volatile
 	line	28
 	
-l21:	
+l19:	
 	return
 	opt stack 0
 GLOBAL	__end_of_instCtrl
@@ -759,35 +748,35 @@ _dataCtrl:
 	movwf	(dataCtrl@b)
 	line	43
 	
-l512:	
+l510:	
 ;LE2-1.c: 43: PORTB=b;
 	movf	(dataCtrl@b),w
 	bcf	status, 5	;RP0=0, select bank0
 	bcf	status, 6	;RP1=0, select bank0
 	movwf	(6)	;volatile
-	line	44
-	
-l514:	
-;LE2-1.c: 44: RC0=1;
-	bsf	(56/8),(56)&7	;volatile
 	line	45
 	
-l516:	
-;LE2-1.c: 45: RC2=0;
-	bcf	(58/8),(58)&7	;volatile
+l512:	
+;LE2-1.c: 45: RC0=1;
+	bsf	(56/8),(56)&7	;volatile
 	line	46
 	
-l518:	
-;LE2-1.c: 46: RC1=1;
-	bsf	(57/8),(57)&7	;volatile
+l514:	
+;LE2-1.c: 46: RC2=0;
+	bcf	(58/8),(58)&7	;volatile
 	line	47
 	
-l520:	
-;LE2-1.c: 47: for(j=0;j<100;j++);
+l516:	
+;LE2-1.c: 47: RC1=1;
+	bsf	(57/8),(57)&7	;volatile
+	line	48
+	
+l518:	
+;LE2-1.c: 48: for(j=0;j<100;j++);
 	clrf	(_j)
 	clrf	(_j+1)
 	
-l522:	
+l520:	
 	movf	(_j+1),w
 	xorlw	80h
 	movwf	btemp+1
@@ -803,16 +792,16 @@ u35:
 	goto	u31
 	goto	u30
 u31:
-	goto	l526
+	goto	l524
 u30:
-	goto	l28
+	goto	l26
+	
+l522:	
+	goto	l26
+	
+l25:	
 	
 l524:	
-	goto	l28
-	
-l27:	
-	
-l526:	
 	movlw	low(01h)
 	addwf	(_j),f
 	skipnc
@@ -820,7 +809,7 @@ l526:
 	movlw	high(01h)
 	addwf	(_j+1),f
 	
-l528:	
+l526:	
 	movf	(_j+1),w
 	xorlw	80h
 	movwf	btemp+1
@@ -836,18 +825,18 @@ u45:
 	goto	u41
 	goto	u40
 u41:
-	goto	l526
+	goto	l524
 u40:
 	
-l28:	
-	line	48
-;LE2-1.c: 48: RC1=0;
+l26:	
+	line	49
+;LE2-1.c: 49: RC1=0;
 	bcf	status, 5	;RP0=0, select bank0
 	bcf	status, 6	;RP1=0, select bank0
 	bcf	(57/8),(57)&7	;volatile
-	line	49
+	line	50
 	
-l29:	
+l27:	
 	return
 	opt stack 0
 GLOBAL	__end_of_dataCtrl

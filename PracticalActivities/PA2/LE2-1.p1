@@ -12,8 +12,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _TRISB `Vuc ~T0 @X0 0 e@134 ]
 "1396
 [v _TRISC `Vuc ~T0 @X0 0 e@135 ]
-"1457
-[v _TRISD `Vuc ~T0 @X0 0 e@136 ]
 [; ;htc.h: 21: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 24: extern void __builtin_software_breakpoint(void);
 [; ;pic16f877a.h: 47: extern volatile unsigned char INDF @ 0x000;
@@ -1134,17 +1132,17 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;LE2-1.c: 43: PORTB=b;
 "43
 [e = _PORTB _b ]
-[; ;LE2-1.c: 44: RC0=1;
-"44
-[e = _RC0 -> -> 1 `i `b ]
-[; ;LE2-1.c: 45: RC2=0;
+[; ;LE2-1.c: 45: RC0=1;
 "45
-[e = _RC2 -> -> 0 `i `b ]
-[; ;LE2-1.c: 46: RC1=1;
+[e = _RC0 -> -> 1 `i `b ]
+[; ;LE2-1.c: 46: RC2=0;
 "46
-[e = _RC1 -> -> 1 `i `b ]
-[; ;LE2-1.c: 47: for(j=0;j<100;j++);
+[e = _RC2 -> -> 0 `i `b ]
+[; ;LE2-1.c: 47: RC1=1;
 "47
+[e = _RC1 -> -> 1 `i `b ]
+[; ;LE2-1.c: 48: for(j=0;j<100;j++);
+"48
 {
 [e = _j -> 0 `i ]
 [e $ < _j -> 100 `i 102  ]
@@ -1154,19 +1152,17 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $ < _j -> 100 `i 102  ]
 [e :U 103 ]
 }
-[; ;LE2-1.c: 48: RC1=0;
-"48
-[e = _RC1 -> -> 0 `i `b ]
-[; ;LE2-1.c: 49: }
+[; ;LE2-1.c: 49: RC1=0;
 "49
+[e = _RC1 -> -> 0 `i `b ]
+[; ;LE2-1.c: 50: }
+"50
 [e :UE 101 ]
 }
-"51
-[v _main `(v ~T0 @X0 1 ef ]
 "52
+[v _main `(v ~T0 @X0 1 ef ]
 {
-[; ;LE2-1.c: 51: void main(void)
-[; ;LE2-1.c: 52: {
+[; ;LE2-1.c: 52: void main(void){
 [e :U _main ]
 [f ]
 [; ;LE2-1.c: 54: TRISB = 0X00;
@@ -1175,43 +1171,37 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;LE2-1.c: 55: TRISC = 0X00;
 "55
 [e = _TRISC -> -> 0 `i `uc ]
-[; ;LE2-1.c: 56: TRISD = 0XFF;
-"56
-[e = _TRISD -> -> 255 `i `uc ]
-[; ;LE2-1.c: 59: initLCD();
-"59
+[; ;LE2-1.c: 58: initLCD();
+"58
 [e ( _initLCD ..  ]
-[; ;LE2-1.c: 60: instCtrl(0xC6);
-"60
+[; ;LE2-1.c: 59: instCtrl(0xC6);
+"59
 [e ( _instCtrl (1 -> -> 198 `i `uc ]
-[; ;LE2-1.c: 61: dataCtrl('H');
-"61
+[; ;LE2-1.c: 60: dataCtrl('H');
+"60
 [e ( _dataCtrl (1 -> -> 72 `ui `uc ]
-[; ;LE2-1.c: 62: dataCtrl('E');
-"62
+[; ;LE2-1.c: 61: dataCtrl('E');
+"61
 [e ( _dataCtrl (1 -> -> 69 `ui `uc ]
+[; ;LE2-1.c: 62: dataCtrl('L');
+"62
+[e ( _dataCtrl (1 -> -> 76 `ui `uc ]
 [; ;LE2-1.c: 63: dataCtrl('L');
 "63
 [e ( _dataCtrl (1 -> -> 76 `ui `uc ]
-[; ;LE2-1.c: 64: dataCtrl('L');
+[; ;LE2-1.c: 64: dataCtrl('O');
 "64
-[e ( _dataCtrl (1 -> -> 76 `ui `uc ]
-[; ;LE2-1.c: 65: dataCtrl('O');
-"65
 [e ( _dataCtrl (1 -> -> 79 `ui `uc ]
-[; ;LE2-1.c: 66: dataCtrl('!');
-"66
+[; ;LE2-1.c: 65: dataCtrl('!');
+"65
 [e ( _dataCtrl (1 -> -> 33 `ui `uc ]
-[; ;LE2-1.c: 67: while(1)
-"67
+[; ;LE2-1.c: 66: while(1);
+"66
 [e :U 107 ]
-[; ;LE2-1.c: 68: ;
-"68
 [e :U 106 ]
-"67
 [e $U 107  ]
 [e :U 108 ]
-[; ;LE2-1.c: 69: }
-"69
+[; ;LE2-1.c: 68: }
+"68
 [e :UE 105 ]
 }
