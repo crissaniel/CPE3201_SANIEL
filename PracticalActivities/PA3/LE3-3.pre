@@ -1426,7 +1426,7 @@ extern void memcpyee(__eeprom unsigned char *to, const unsigned char *from, unsi
 extern __nonreentrant void _delay(unsigned long);
 
 
-# 3 "C:\Users\ASUS\Downloads\Embedded\LE3-3.c"
+# 5 "C:\Users\ASUS\Downloads\Embedded\LE3-3.c"
 #pragma config FOSC = XT
 #pragma config WDTE = OFF
 #pragma config PWRTE = ON
@@ -1443,9 +1443,7 @@ const unsigned char keyMap[16] = {
 0, 0, 0, 0
 };
 
-
 unsigned char current_count = 0;
-unsigned int ms_ticks = 0;
 unsigned char raw_key = 0;
 
 
@@ -1461,16 +1459,6 @@ current_count = keyMap[raw_key];
 
 
 PORTC = current_count;
-
-
-ms_ticks = 0;
-}
-
-
-if (T0IF == 1) {
-T0IF = 0;
-TMR0 = 6;
-ms_ticks++;
 }
 }
 
@@ -1484,26 +1472,17 @@ PORTC = current_count;
 
 
 
-OPTION_REG = 0xC1;
-TMR0 = 6;
+OPTION_REG = 0x40;
 
 INTF = 0;
 INTE = 1;
-
-T0IF = 0;
-T0IE = 1;
 
 GIE = 1;
 
 
 while(1) {
 
-if (ms_ticks >= 800) {
-
-
-GIE = 0;
-ms_ticks = 0;
-GIE = 1;
+_delay((unsigned long)((800)*(4000000/4000.0)));
 
 
 current_count++;
@@ -1515,6 +1494,5 @@ current_count = 0;
 
 
 PORTC = current_count;
-}
 }
 }

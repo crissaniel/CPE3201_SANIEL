@@ -184,7 +184,7 @@ psect	strings
 	global    __end_of__stringtab
 __end_of__stringtab:
 	file	"C:\Users\ASUS\Downloads\Embedded\LE3-3.c"
-	line	12
+	line	14
 _keyMap:
 	retlw	01h
 	retlw	02h
@@ -205,25 +205,18 @@ _keyMap:
 	global __end_of_keyMap
 __end_of_keyMap:
 	global	_keyMap
-	global	_ms_ticks
 	global	_current_count
 	global	_raw_key
 	global	_PORTC
 _PORTC	set	0x7
 	global	_PORTD
 _PORTD	set	0x8
-	global	_TMR0
-_TMR0	set	0x1
 	global	_GIE
 _GIE	set	0x5F
 	global	_INTE
 _INTE	set	0x5C
 	global	_INTF
 _INTF	set	0x59
-	global	_T0IE
-_T0IE	set	0x5D
-	global	_T0IF
-_T0IF	set	0x5A
 	global	_OPTION_REG
 _OPTION_REG	set	0x81
 	global	_TRISB
@@ -260,9 +253,6 @@ __initialization:
 psect	bssCOMMON,class=COMMON,space=1,noexec
 global __pbssCOMMON
 __pbssCOMMON:
-_ms_ticks:
-       ds      2
-
 _current_count:
        ds      1
 
@@ -274,8 +264,6 @@ _raw_key:
 psect cinit,class=CODE,delta=2,merge=1
 	clrf	((__pbssCOMMON)+0)&07Fh
 	clrf	((__pbssCOMMON)+1)&07Fh
-	clrf	((__pbssCOMMON)+2)&07Fh
-	clrf	((__pbssCOMMON)+3)&07Fh
 psect cinit,class=CODE,delta=2,merge=1
 global end_of_initialization,__end_of__initialization
 
@@ -292,19 +280,19 @@ __pcstackCOMMON:
 ?_main:	; 0 bytes @ 0x0
 	ds	5
 ??_main:	; 0 bytes @ 0x5
-	ds	1
+	ds	3
 ;!
 ;!Data Sizes:
 ;!    Strings     0
 ;!    Constant    16
 ;!    Data        0
-;!    BSS         4
+;!    BSS         2
 ;!    Persistent  0
 ;!    Stack       0
 ;!
 ;!Auto Spaces:
 ;!    Space          Size  Autos    Used
-;!    COMMON           14      6      10
+;!    COMMON           14      8      10
 ;!    BANK0            80      0       0
 ;!    BANK1            80      0       0
 ;!    BANK3            96      0       0
@@ -358,7 +346,7 @@ __pcstackCOMMON:
 ;!    None.
 
 ;;
-;;Main: autosize = 0, tempsize = 1, incstack = 0, save=0
+;;Main: autosize = 0, tempsize = 3, incstack = 0, save=0
 ;;
 
 ;!
@@ -367,8 +355,8 @@ __pcstackCOMMON:
 ;! ---------------------------------------------------------------------------------
 ;! (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
 ;! ---------------------------------------------------------------------------------
-;! (0) _main                                                 1     1      0       0
-;!                                              5 COMMON     1     1      0
+;! (0) _main                                                 3     3      0       0
+;!                                              5 COMMON     3     3      0
 ;! ---------------------------------------------------------------------------------
 ;! Estimated maximum stack depth 0
 ;! ---------------------------------------------------------------------------------
@@ -394,7 +382,7 @@ __pcstackCOMMON:
 ;!EEDATA             100      0       0       0        0.0%
 ;!NULL                 0      0       0       0        0.0%
 ;!CODE                 0      0       0       0        0.0%
-;!COMMON               E      6       A       1       71.4%
+;!COMMON               E      8       A       1       71.4%
 ;!BITSFR0              0      0       0       1        0.0%
 ;!SFR0                 0      0       0       1        0.0%
 ;!BITSFR1              0      0       0       2        0.0%
@@ -419,7 +407,7 @@ __pcstackCOMMON:
 
 ;; *************** function _main *****************
 ;; Defined at:
-;;		line 50 in file "C:\Users\ASUS\Downloads\Embedded\LE3-3.c"
+;;		line 40 in file "C:\Users\ASUS\Downloads\Embedded\LE3-3.c"
 ;; Parameters:    Size  Location     Type
 ;;		None
 ;; Auto vars:     Size  Location     Type
@@ -435,9 +423,9 @@ __pcstackCOMMON:
 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
 ;;      Params:         0       0       0       0       0
 ;;      Locals:         0       0       0       0       0
-;;      Temps:          1       0       0       0       0
-;;      Totals:         1       0       0       0       0
-;;Total ram usage:        1 bytes
+;;      Temps:          3       0       0       0       0
+;;      Totals:         3       0       0       0       0
+;;Total ram usage:        3 bytes
 ;; Hardware stack levels required when called:    2
 ;; This function calls:
 ;;		Nothing
@@ -447,12 +435,12 @@ __pcstackCOMMON:
 ;;
 psect	maintext,global,class=CODE,delta=2,split=1
 	file	"C:\Users\ASUS\Downloads\Embedded\LE3-3.c"
-	line	50
+	line	40
 global __pmaintext
 __pmaintext:	;psect for function _main
 psect	maintext
 	file	"C:\Users\ASUS\Downloads\Embedded\LE3-3.c"
-	line	50
+	line	40
 	global	__size_of_main
 	__size_of_main	equ	__end_of_main-_main
 	
@@ -460,163 +448,130 @@ _main:
 ;incstack = 0
 	opt	stack 6
 ; Regs used in _main: [wreg+status,2+status,0]
-	line	52
+	line	42
 	
-l520:	
-;LE3-3.c: 52: TRISB = 0xFF;
+l504:	
+;LE3-3.c: 42: TRISB = 0xFF;
 	movlw	(0FFh)
 	bsf	status, 5	;RP0=1, select bank1
 	bcf	status, 6	;RP1=0, select bank1
 	movwf	(134)^080h	;volatile
-	line	53
+	line	43
 	
-l522:	
-;LE3-3.c: 53: TRISC = 0x00;
+l506:	
+;LE3-3.c: 43: TRISC = 0x00;
 	clrf	(135)^080h	;volatile
-	line	54
+	line	44
 	
-l524:	
-;LE3-3.c: 54: TRISD = 0xFF;
+l508:	
+;LE3-3.c: 44: TRISD = 0xFF;
 	movlw	(0FFh)
 	movwf	(136)^080h	;volatile
-	line	56
+	line	46
 	
-l526:	
-;LE3-3.c: 56: PORTC = current_count;
+l510:	
+;LE3-3.c: 46: PORTC = current_count;
 	movf	(_current_count),w
 	bcf	status, 5	;RP0=0, select bank0
 	bcf	status, 6	;RP1=0, select bank0
 	movwf	(7)	;volatile
-	line	60
+	line	50
 	
-l528:	
-;LE3-3.c: 60: OPTION_REG = 0xC1;
-	movlw	(0C1h)
+l512:	
+;LE3-3.c: 50: OPTION_REG = 0x40;
+	movlw	(040h)
 	bsf	status, 5	;RP0=1, select bank1
 	bcf	status, 6	;RP1=0, select bank1
 	movwf	(129)^080h	;volatile
-	line	61
+	line	52
 	
-l530:	
-;LE3-3.c: 61: TMR0 = 6;
-	movlw	(06h)
-	bcf	status, 5	;RP0=0, select bank0
-	bcf	status, 6	;RP1=0, select bank0
-	movwf	(1)	;volatile
+l514:	
+;LE3-3.c: 52: INTF = 0;
+	bcf	(89/8),(89)&7	;volatile
+	line	53
+	
+l516:	
+;LE3-3.c: 53: INTE = 1;
+	bsf	(92/8),(92)&7	;volatile
+	line	55
+	
+l518:	
+;LE3-3.c: 55: GIE = 1;
+	bsf	(95/8),(95)&7	;volatile
+	goto	l520
+	line	58
+;LE3-3.c: 58: while(1) {
+	
+l33:	
+	line	60
+	
+l520:	
+;LE3-3.c: 60: _delay((unsigned long)((800)*(4000000/4000.0)));
+	opt asmopt_off
+movlw  5
+movwf	((??_main+0)+0+2),f
+movlw	15
+movwf	((??_main+0)+0+1),f
+	movlw	244
+movwf	((??_main+0)+0),f
+u37:
+	decfsz	((??_main+0)+0),f
+	goto	u37
+	decfsz	((??_main+0)+0+1),f
+	goto	u37
+	decfsz	((??_main+0)+0+2),f
+	goto	u37
+opt asmopt_on
+
 	line	63
 	
-l532:	
-;LE3-3.c: 63: INTF = 0;
-	bcf	(89/8),(89)&7	;volatile
-	line	64
-	
-l534:	
-;LE3-3.c: 64: INTE = 1;
-	bsf	(92/8),(92)&7	;volatile
-	line	66
-	
-l536:	
-;LE3-3.c: 66: T0IF = 0;
-	bcf	(90/8),(90)&7	;volatile
-	line	67
-	
-l538:	
-;LE3-3.c: 67: T0IE = 1;
-	bsf	(93/8),(93)&7	;volatile
-	line	69
-	
-l540:	
-;LE3-3.c: 69: GIE = 1;
-	bsf	(95/8),(95)&7	;volatile
-	goto	l542
-	line	72
-;LE3-3.c: 72: while(1) {
-	
-l40:	
-	line	74
-	
-l542:	
-;LE3-3.c: 74: if (ms_ticks >= 800) {
-	movlw	high(0320h)
-	subwf	(_ms_ticks+1),w
-	movlw	low(0320h)
-	skipnz
-	subwf	(_ms_ticks),w
-	skipc
-	goto	u31
-	goto	u30
-u31:
-	goto	l542
-u30:
-	line	77
-	
-l544:	
-;LE3-3.c: 77: GIE = 0;
-	bcf	(95/8),(95)&7	;volatile
-	line	78
-	
-l546:	
-;LE3-3.c: 78: ms_ticks = 0;
-	clrf	(_ms_ticks)
-	clrf	(_ms_ticks+1)
-	line	79
-	
-l548:	
-;LE3-3.c: 79: GIE = 1;
-	bsf	(95/8),(95)&7	;volatile
-	line	82
-	
-l550:	
-;LE3-3.c: 82: current_count++;
+l522:	
+;LE3-3.c: 63: current_count++;
 	movlw	(01h)
 	movwf	(??_main+0)+0
 	movf	(??_main+0)+0,w
 	addwf	(_current_count),f
-	line	85
+	line	66
 	
-l552:	
-;LE3-3.c: 85: if (current_count > 9) {
+l524:	
+;LE3-3.c: 66: if (current_count > 9) {
 	movlw	(0Ah)
 	subwf	(_current_count),w
 	skipc
-	goto	u41
-	goto	u40
-u41:
-	goto	l556
-u40:
-	line	86
+	goto	u21
+	goto	u20
+u21:
+	goto	l528
+u20:
+	line	67
 	
-l554:	
-;LE3-3.c: 86: current_count = 0;
+l526:	
+;LE3-3.c: 67: current_count = 0;
 	clrf	(_current_count)
-	goto	l556
-	line	87
+	goto	l528
+	line	68
 	
-l42:	
-	line	90
+l34:	
+	line	71
 	
-l556:	
-;LE3-3.c: 87: }
-;LE3-3.c: 90: PORTC = current_count;
+l528:	
+;LE3-3.c: 68: }
+;LE3-3.c: 71: PORTC = current_count;
 	movf	(_current_count),w
 	bcf	status, 5	;RP0=0, select bank0
 	bcf	status, 6	;RP1=0, select bank0
 	movwf	(7)	;volatile
-	goto	l542
-	line	91
-	
-l41:	
-	goto	l542
-	line	92
-	
-l43:	
+	goto	l520
 	line	72
-	goto	l542
 	
-l44:	
-	line	93
+l35:	
+	line	58
+	goto	l520
 	
-l45:	
+l36:	
+	line	73
+	
+l37:	
 	global	start
 	ljmp	start
 	opt stack 0
@@ -689,22 +644,22 @@ interrupt_function:
 psect	text1
 	line	28
 	
-i1l502:	
+i1l494:	
 ;LE3-3.c: 28: if (INTF == 1) {
 	btfss	(89/8),(89)&7	;volatile
 	goto	u1_21
 	goto	u1_20
 u1_21:
-	goto	i1l514
+	goto	i1l30
 u1_20:
 	line	29
 	
-i1l504:	
+i1l496:	
 ;LE3-3.c: 29: INTF = 0;
 	bcf	(89/8),(89)&7	;volatile
 	line	32
 	
-i1l506:	
+i1l498:	
 ;LE3-3.c: 32: raw_key = PORTD & 0x0F;
 	movf	(8),w	;volatile
 	andlw	0Fh
@@ -713,7 +668,7 @@ i1l506:
 	movwf	(_raw_key)
 	line	33
 	
-i1l508:	
+i1l500:	
 ;LE3-3.c: 33: current_count = keyMap[raw_key];
 	movf	(_raw_key),w
 	addlw	low((_keyMap)-__stringbase)
@@ -724,57 +679,17 @@ i1l508:
 	movwf	(_current_count)
 	line	36
 	
-i1l510:	
+i1l502:	
 ;LE3-3.c: 36: PORTC = current_count;
 	movf	(_current_count),w
 	movwf	(7)	;volatile
-	line	39
+	goto	i1l30
+	line	37
 	
-i1l512:	
-;LE3-3.c: 39: ms_ticks = 0;
-	clrf	(_ms_ticks)
-	clrf	(_ms_ticks+1)
-	goto	i1l514
-	line	40
+i1l29:	
+	line	38
 	
-i1l35:	
-	line	43
-	
-i1l514:	
-;LE3-3.c: 40: }
-;LE3-3.c: 43: if (T0IF == 1) {
-	btfss	(90/8),(90)&7	;volatile
-	goto	u2_21
-	goto	u2_20
-u2_21:
-	goto	i1l37
-u2_20:
-	line	44
-	
-i1l516:	
-;LE3-3.c: 44: T0IF = 0;
-	bcf	(90/8),(90)&7	;volatile
-	line	45
-	
-i1l518:	
-;LE3-3.c: 45: TMR0 = 6;
-	movlw	(06h)
-	movwf	(1)	;volatile
-	line	46
-;LE3-3.c: 46: ms_ticks++;
-	movlw	low(01h)
-	addwf	(_ms_ticks),f
-	skipnc
-	incf	(_ms_ticks+1),f
-	movlw	high(01h)
-	addwf	(_ms_ticks+1),f
-	goto	i1l37
-	line	47
-	
-i1l36:	
-	line	48
-	
-i1l37:	
+i1l30:	
 	movf	(??_ISR+4),w
 	movwf	btemp+1
 	movf	(??_ISR+3),w

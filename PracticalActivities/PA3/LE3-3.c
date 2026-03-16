@@ -1,5 +1,7 @@
 #include <xc.h>
 
+#define _XTAL_FREQ 4000000 
+
 #pragma config FOSC = XT 
 #pragma config WDTE = OFF 
 #pragma config PWRTE = ON 
@@ -16,15 +18,13 @@ const unsigned char keyMap[16] = {
     0, 0, 0, 0  
 };
 
-// Global variables declared at the top for C89/v1.33 compatibility
 unsigned char current_count = 0;
-unsigned int ms_ticks = 0;       // Tracks milliseconds
 unsigned char raw_key = 0;
 
-// Interrupt Service Routine
+// FIXED: Reverted back to the v1.33 compatible interrupt syntax
 void interrupt ISR(void) {
     
-    // 1. External Interrupt (Keypad Press on RB0)
+    // External Interrupt (Keypad Press on RB0)
     if (INTF == 1) {
         INTF = 0; // Clear the hardware flag
         
@@ -34,16 +34,6 @@ void interrupt ISR(void) {
         
         // Output immediately so the display feels responsive
         PORTC = current_count;
-        
-        // Reset the timer so it waits a full 0.8s before going to the next number
-        ms_ticks = 0; 
-    }
-    
-    // 2. Timer0 Interrupt (Triggers exactly every 1ms)
-    if (T0IF == 1) {
-        T0IF = 0;     // Clear hardware flag
-        TMR0 = 6;     // Preload TMR0 with 6
-        ms_ticks++;   // Add 1 millisecond to our tracker
     }
 }
 
@@ -55,39 +45,29 @@ void main(void) {
     
     PORTC = current_count; // Start at 0
 
-    // 2. Interrupt & Timer0 Configuration
-    // 0xC1 = 1100 0001 -> Rising Edge INT, Internal Clock, 1:4 Prescaler
-    OPTION_REG = 0xC1; 
-    TMR0 = 6; // Initial preload for Timer0
+    // 2. Interrupt Configuration
+    // 0x40 = 0100 0000 -> Rising Edge INT (Bit 6)
+    OPTION_REG = 0x40; 
 
     INTF = 0; 
     INTE = 1; // Enable External Interrupt (RB0)
-
-    T0IF = 0;
-    T0IE = 1; // Enable Timer0 Interrupt
 
     GIE = 1;  // Enable Global Interrupts
 
     // 3. Main Loop
     while(1) {
-        // CHANGED: If 800 milliseconds (0.8 seconds) have passed...
-        if (ms_ticks >= 800) {
-            
-            // Briefly disable global interrupts to safely reset the tracker
-            GIE = 0;
-            ms_ticks = 0;
-            GIE = 1;
-            
-            // Increment the counter
-            current_count++;
-            
-            // Wrap around back to 0 if it goes past 9
-            if (current_count > 9) {
-                current_count = 0;
-            }
-            
-            // Update the 7-segment display
-            PORTC = current_count; 
+        // TRADITIONAL BLOCKING DELAY: 800 milliseconds
+        __delay_ms(800); 
+        
+        // Increment the counter
+        current_count++;
+        
+        // Wrap around back to 0 if it goes past 9
+        if (current_count > 9) {
+            current_count = 0;
         }
+        
+        // Update the 7-segment display
+        PORTC = current_count; 
     }
 }

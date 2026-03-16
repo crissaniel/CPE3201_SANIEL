@@ -1,6 +1,6 @@
-__stringtab: STRING, 122 0 6
-_ISR: CODE, 77 0 45
-_main: CODE, 29 0 48
-_keyMap: STRING, 128 0 16
-__initialization: CODE, 21 0 4
-Total: 119
+__stringtab: STRING, 102 0 6
+_ISR: CODE, 70 0 32
+_main: CODE, 27 0 43
+_keyMap: STRING, 108 0 16
+__initialization: CODE, 21 0 2
+Total: 99
