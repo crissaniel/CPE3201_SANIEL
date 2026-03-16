@@ -5,6 +5,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _PORTD `Vuc ~T0 @X0 0 e@8 ]
 "268
 [v _PORTC `Vuc ~T0 @X0 0 e@7 ]
+"2629
+[v _T0IF `Vb ~T0 @X0 0 e@90 ]
 [p mainexit ]
 "1335
 [v _TRISB `Vuc ~T0 @X0 0 e@134 ]
@@ -16,12 +18,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _OPTION_REG `Vuc ~T0 @X0 0 e@129 ]
 "2461
 [v _INTE `Vb ~T0 @X0 0 e@92 ]
+"2627
+[v _T0IE `Vb ~T0 @X0 0 e@93 ]
 "2441
 [v _GIE `Vb ~T0 @X0 0 e@95 ]
-[v F1089 `(v ~T0 @X0 1 tf1`ul ]
-"154 C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic.h
-[v __delay `JF1089 ~T0 @X0 0 e ]
-[p i __delay ]
 [; ;htc.h: 21: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 24: extern void __builtin_software_breakpoint(void);
 [; ;pic16f877a.h: 47: extern volatile unsigned char INDF @ 0x000;
@@ -1035,55 +1035,55 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;eeprom_routines.h: 43: extern void eecpymem(volatile unsigned char *to, __eeprom unsigned char *from, unsigned char size);
 [; ;eeprom_routines.h: 44: extern void memcpyee(__eeprom unsigned char *to, const unsigned char *from, unsigned char size);
 [; ;pic.h: 154: extern __nonreentrant void _delay(unsigned long);
-"5 C:\Users\ASUS\Downloads\Embedded\LE3-3.c
+"3 C:\Users\ASUS\Downloads\Embedded\PA3\LE3-3.c
 [p x FOSC=XT ]
-"6
+"4
 [p x WDTE=OFF ]
-"7
+"5
 [p x PWRTE=ON ]
-"8
+"6
 [p x BOREN=ON ]
-"9
+"7
 [p x LVP=OFF ]
-"10
+"8
 [p x CPD=OFF ]
-"11
+"9
 [p x WRT=OFF ]
-"12
+"10
 [p x CP=OFF ]
-"14
+"13
 [v _keyMap `Cuc ~T0 @X0 -> 16 `i e ]
 [i _keyMap
 :U ..
-"15
+"14
 -> -> 1 `i `uc
 -> -> 2 `i `uc
 -> -> 3 `i `uc
 -> -> 0 `i `uc
-"16
+"15
 -> -> 4 `i `uc
 -> -> 5 `i `uc
 -> -> 6 `i `uc
 -> -> 0 `i `uc
-"17
+"16
 -> -> 7 `i `uc
 -> -> 8 `i `uc
 -> -> 9 `i `uc
 -> -> 0 `i `uc
+"17
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
 "18
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
-"19
 -> -> 0 `i `uc
 ..
 ]
-[; ;LE3-3.c: 14: const unsigned char keyMap[16] = {
-[; ;LE3-3.c: 15: 1, 2, 3, 0,
-[; ;LE3-3.c: 16: 4, 5, 6, 0,
-[; ;LE3-3.c: 17: 7, 8, 9, 0,
-[; ;LE3-3.c: 18: 0, 0, 0, 0
-[; ;LE3-3.c: 19: };
+[; ;LE3-3.c: 13: const unsigned char keyMap[16] = {
+[; ;LE3-3.c: 14: 1, 2, 3, 0,
+[; ;LE3-3.c: 15: 4, 5, 6, 0,
+[; ;LE3-3.c: 16: 7, 8, 9, 0,
+[; ;LE3-3.c: 17: 0, 0, 0, 0
+[; ;LE3-3.c: 18: };
 "21
 [v _current_count `uc ~T0 @X0 1 e ]
 [i _current_count
@@ -1091,104 +1091,189 @@ Version 3.2 HI-TECH Software Intermediate Code
 ]
 [; ;LE3-3.c: 21: unsigned char current_count = 0;
 "22
-[v _raw_key `uc ~T0 @X0 1 e ]
-[i _raw_key
+[v _myTMR0IF `uc ~T0 @X0 1 e ]
+[i _myTMR0IF
 -> -> 0 `i `uc
 ]
-[; ;LE3-3.c: 22: unsigned char raw_key = 0;
-[v F1095 `(v ~T0 @X0 1 tf ]
-"25
-[v _ISR `IF1095 ~T0 @X0 1 e ]
+[; ;LE3-3.c: 22: unsigned char myTMR0IF = 0;
+"23
+[v _reset_delay `uc ~T0 @X0 1 e ]
+[i _reset_delay
+-> -> 0 `i `uc
+]
+[; ;LE3-3.c: 23: unsigned char reset_delay = 0;
+[v F1096 `(v ~T0 @X0 1 tf ]
+"26
+[v _ISR `IF1096 ~T0 @X0 1 e ]
 {
-[; ;LE3-3.c: 25: void interrupt ISR(void) {
+[; ;LE3-3.c: 26: void interrupt ISR(void) {
 [e :U _ISR ]
 [f ]
-[; ;LE3-3.c: 28: if (INTF == 1) {
-"28
+[; ;LE3-3.c: 29: if (INTF == 1) {
+"29
 [e $ ! == -> _INTF `i -> 1 `i 97  ]
 {
-[; ;LE3-3.c: 29: INTF = 0;
-"29
+[; ;LE3-3.c: 30: INTF = 0;
+"30
 [e = _INTF -> -> 0 `i `b ]
-[; ;LE3-3.c: 32: raw_key = PORTD & 0x0F;
-"32
-[e = _raw_key -> & -> _PORTD `i -> 15 `i `uc ]
-[; ;LE3-3.c: 33: current_count = keyMap[raw_key];
 "33
+[v _raw_key `uc ~T0 @X0 1 a ]
+[; ;LE3-3.c: 33: unsigned char raw_key = PORTD & 0x0F;
+[e = _raw_key -> & -> _PORTD `i -> 15 `i `uc ]
+[; ;LE3-3.c: 34: current_count = keyMap[raw_key];
+"34
 [e = _current_count *U + &U _keyMap * -> _raw_key `ux -> -> # *U &U _keyMap `ui `ux ]
-[; ;LE3-3.c: 36: PORTC = current_count;
-"36
-[e = _PORTC _current_count ]
+[; ;LE3-3.c: 37: PORTC = current_count;
 "37
+[e = _PORTC _current_count ]
+[; ;LE3-3.c: 40: reset_delay = 1;
+"40
+[e = _reset_delay -> -> 1 `i `uc ]
+"41
 }
 [e :U 97 ]
-[; ;LE3-3.c: 37: }
-[; ;LE3-3.c: 38: }
-"38
+[; ;LE3-3.c: 41: }
+[; ;LE3-3.c: 44: if (T0IF == 1) {
+"44
+[e $ ! == -> _T0IF `i -> 1 `i 98  ]
+{
+[; ;LE3-3.c: 45: T0IF = 0;
+"45
+[e = _T0IF -> -> 0 `i `b ]
+[; ;LE3-3.c: 46: myTMR0IF = 1;
+"46
+[e = _myTMR0IF -> -> 1 `i `uc ]
+"47
+}
+[e :U 98 ]
+[; ;LE3-3.c: 47: }
+[; ;LE3-3.c: 48: }
+"48
 [e :UE 96 ]
 }
-"40
-[v _main `(v ~T0 @X0 1 ef ]
+"51
+[v _delay `(v ~T0 @X0 1 ef1`i ]
 {
-[; ;LE3-3.c: 40: void main(void) {
-[e :U _main ]
+[; ;LE3-3.c: 51: void delay(int cnt) {
+[e :U _delay ]
+[v _cnt `i ~T0 @X0 1 r1 ]
 [f ]
-[; ;LE3-3.c: 42: TRISB = 0xFF;
-"42
-[e = _TRISB -> -> 255 `i `uc ]
-[; ;LE3-3.c: 43: TRISC = 0x00;
-"43
-[e = _TRISC -> -> 0 `i `uc ]
-[; ;LE3-3.c: 44: TRISD = 0xFF;
-"44
-[e = _TRISD -> -> 255 `i `uc ]
-[; ;LE3-3.c: 46: PORTC = current_count;
-"46
-[e = _PORTC _current_count ]
-[; ;LE3-3.c: 50: OPTION_REG = 0x40;
-"50
-[e = _OPTION_REG -> -> 64 `i `uc ]
-[; ;LE3-3.c: 52: INTF = 0;
 "52
-[e = _INTF -> -> 0 `i `b ]
-[; ;LE3-3.c: 53: INTE = 1;
-"53
-[e = _INTE -> -> 1 `i `b ]
-[; ;LE3-3.c: 55: GIE = 1;
+[v _of_count `i ~T0 @X0 1 a ]
+[; ;LE3-3.c: 52: int of_count = 0;
+[e = _of_count -> 0 `i ]
+[; ;LE3-3.c: 55: while (of_count < cnt) {
 "55
-[e = _GIE -> -> 1 `i `b ]
-[; ;LE3-3.c: 58: while(1) {
-"58
-[e :U 100 ]
-{
-[; ;LE3-3.c: 60: _delay((unsigned long)((800)*(4000000/4000.0)));
-"60
-[e ( __delay (1 -> * -> -> 800 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-[; ;LE3-3.c: 63: current_count++;
-"63
-[e ++ _current_count -> -> 1 `i `uc ]
-[; ;LE3-3.c: 66: if (current_count > 9) {
-"66
-[e $ ! > -> _current_count `i -> 9 `i 102  ]
-{
-[; ;LE3-3.c: 67: current_count = 0;
-"67
-[e = _current_count -> -> 0 `i `uc ]
-"68
-}
-[e :U 102 ]
-[; ;LE3-3.c: 68: }
-[; ;LE3-3.c: 71: PORTC = current_count;
-"71
-[e = _PORTC _current_count ]
-"72
-}
-[e :U 99 ]
-"58
 [e $U 100  ]
 [e :U 101 ]
-[; ;LE3-3.c: 72: }
-[; ;LE3-3.c: 73: }
+{
+[; ;LE3-3.c: 58: if (reset_delay == 1) {
+"58
+[e $ ! == -> _reset_delay `i -> 1 `i 103  ]
+{
+[; ;LE3-3.c: 59: of_count = 0;
+"59
+[e = _of_count -> 0 `i ]
+[; ;LE3-3.c: 60: reset_delay = 0;
+"60
+[e = _reset_delay -> -> 0 `i `uc ]
+"61
+}
+[e :U 103 ]
+[; ;LE3-3.c: 61: }
+[; ;LE3-3.c: 64: if (myTMR0IF == 1) {
+"64
+[e $ ! == -> _myTMR0IF `i -> 1 `i 104  ]
+{
+[; ;LE3-3.c: 65: of_count++;
+"65
+[e ++ _of_count -> 1 `i ]
+[; ;LE3-3.c: 66: myTMR0IF = 0;
+"66
+[e = _myTMR0IF -> -> 0 `i `uc ]
+"67
+}
+[e :U 104 ]
+"68
+}
+[e :U 100 ]
+"55
+[e $ < _of_count _cnt 101  ]
+[e :U 102 ]
+[; ;LE3-3.c: 67: }
+[; ;LE3-3.c: 68: }
+[; ;LE3-3.c: 69: }
+"69
+[e :UE 99 ]
+}
+"71
+[v _main `(v ~T0 @X0 1 ef ]
+{
+[; ;LE3-3.c: 71: void main(void) {
+[e :U _main ]
+[f ]
+[; ;LE3-3.c: 73: TRISB = 0xFF;
 "73
-[e :UE 98 ]
+[e = _TRISB -> -> 255 `i `uc ]
+[; ;LE3-3.c: 74: TRISC = 0x00;
+"74
+[e = _TRISC -> -> 0 `i `uc ]
+[; ;LE3-3.c: 75: TRISD = 0xFF;
+"75
+[e = _TRISD -> -> 255 `i `uc ]
+[; ;LE3-3.c: 77: PORTC = current_count;
+"77
+[e = _PORTC _current_count ]
+[; ;LE3-3.c: 81: OPTION_REG = 0xC4;
+"81
+[e = _OPTION_REG -> -> 196 `i `uc ]
+[; ;LE3-3.c: 83: INTF = 0;
+"83
+[e = _INTF -> -> 0 `i `b ]
+[; ;LE3-3.c: 84: INTE = 1;
+"84
+[e = _INTE -> -> 1 `i `b ]
+[; ;LE3-3.c: 86: T0IF = 0;
+"86
+[e = _T0IF -> -> 0 `i `b ]
+[; ;LE3-3.c: 87: T0IE = 1;
+"87
+[e = _T0IE -> -> 1 `i `b ]
+[; ;LE3-3.c: 89: GIE = 1;
+"89
+[e = _GIE -> -> 1 `i `b ]
+[; ;LE3-3.c: 92: while(1) {
+"92
+[e :U 107 ]
+{
+[; ;LE3-3.c: 95: delay(98);
+"95
+[e ( _delay (1 -> 98 `i ]
+[; ;LE3-3.c: 98: current_count++;
+"98
+[e ++ _current_count -> -> 1 `i `uc ]
+[; ;LE3-3.c: 101: if (current_count > 9) {
+"101
+[e $ ! > -> _current_count `i -> 9 `i 109  ]
+{
+[; ;LE3-3.c: 102: current_count = 0;
+"102
+[e = _current_count -> -> 0 `i `uc ]
+"103
+}
+[e :U 109 ]
+[; ;LE3-3.c: 103: }
+[; ;LE3-3.c: 106: PORTC = current_count;
+"106
+[e = _PORTC _current_count ]
+"107
+}
+[e :U 106 ]
+"92
+[e $U 107  ]
+[e :U 108 ]
+[; ;LE3-3.c: 107: }
+[; ;LE3-3.c: 108: }
+"108
+[e :UE 105 ]
 }
