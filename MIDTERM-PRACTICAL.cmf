@@ -1,0 +1,373 @@
+%CMF
+# %PSECTS Section
+# For each object file, details of its psects are enumerated here.
+# The begining of the section is indicated by %PSECTS.  The first
+# line indicates the name of the first object file, e.g.
+#    $foo.obj
+# Each line that follows describes a psect in that object file, until
+# the next object file.  The lines that describe a psect have the
+# format:
+#    <psect name> <class name> <space> <link address> <load addresses> <length> <delta>
+# All addresses and the length are given in unqualified hexadecimal
+# in delta units.  Any other numeric values are decimal.
+%PSECTS
+$startup.obj
+end_init CODE 0 12 12 3 2
+reset_vec CODE 0 0 0 3 2
+config CONFIG 0 2007 2007 1 2
+$MIDTERM-PRACTICAL.obj
+cinit CODE 0 15 15 7 2
+intentry CODE 0 4 4 E 2
+text5 CODE 0 110 110 12 2
+text4 CODE 0 C1 C1 29 2
+text3 CODE 0 FD FD 13 2
+text2 CODE 0 EA EA 13 2
+text1 CODE 0 98 98 29 2
+maintext CODE 0 1C 1C 7C 2
+cstackBANK0 BANK0 1 20 20 7 1
+cstackCOMMON COMMON 1 70 70 8 1
+bssBANK0 BANK0 1 27 27 1 1
+bssCOMMON COMMON 1 78 78 2 1
+# %UNUSED Section
+# This section enumerates the unused ranges of each CLASS. Each entry
+# is described on a single line as follows:
+#    <class name> <range> <delta>
+# Addresses given in the range are in hexadecimal and units of delta.
+%UNUSED
+BANK0 0028-006F 1
+BANK1 00A0-00EF 1
+BANK2 0110-016F 1
+BANK3 0190-01EF 1
+CODE 0003-0003 2
+CODE 0122-1FFF 2
+COMMON 007A-007D 1
+CONST 0003-0003 2
+CONST 0122-1FFF 2
+EEDATA 2100-21FF 2
+ENTRY 0003-0003 2
+ENTRY 0122-1FFF 2
+IDLOC 2000-2003 2
+RAM 0028-006F 1
+RAM 00A0-00EF 1
+RAM 0110-016F 1
+RAM 0190-01EF 1
+SFR0 0000-001F 1
+SFR1 0080-009F 1
+SFR2 0100-010F 1
+SFR3 0180-018F 1
+STACK 0110-016F 1
+STRCODE 0003-0003 2
+STRCODE 0122-1FFF 2
+STRING 0003-0003 2
+STRING 0122-1FFF 2
+# %LINETAB Section
+# This section enumerates the file/line to address mappings.
+# The beginning of the section is indicated by %LINETAB.
+# The first line indicates the name of the first object file, e.g.
+#   $foo.obj
+# Each line that follows describes a single mapping until the next
+# object file.  Mappings have the following format:
+#    <file name>:<line number> <address> <psect name> <class name>
+# The address is absolute and given given in unqualified hex 
+# in delta units of the psect. All mappings within an object file
+# are in ascending order of addresses.
+# All other numeric values are in decimal.
+%LINETAB
+$MIDTERM-PRACTICAL.obj
+"C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f877a.h":2761 0 text0 CODE
+"Z:\CPE3201_SANIEL\Midterms\ME_SANIEL.c":27 4 intentry CODE
+"Z:\CPE3201_SANIEL\Midterms\MIDTERM-PRACTICAL.as":223 15 cinit CODE
+"Z:\CPE3201_SANIEL\Midterms\MIDTERM-PRACTICAL.as":226 15 cinit CODE
+"Z:\CPE3201_SANIEL\Midterms\MIDTERM-PRACTICAL.as":242 15 cinit CODE
+"Z:\CPE3201_SANIEL\Midterms\MIDTERM-PRACTICAL.as":243 16 cinit CODE
+"Z:\CPE3201_SANIEL\Midterms\MIDTERM-PRACTICAL.as":246 17 cinit CODE
+"Z:\CPE3201_SANIEL\Midterms\MIDTERM-PRACTICAL.as":252 18 cinit CODE
+"Z:\CPE3201_SANIEL\Midterms\MIDTERM-PRACTICAL.as":253 18 cinit CODE
+"Z:\CPE3201_SANIEL\Midterms\MIDTERM-PRACTICAL.as":254 19 cinit CODE
+"Z:\CPE3201_SANIEL\Midterms\ME_SANIEL.c":75 1C maintext CODE
+"Z:\CPE3201_SANIEL\Midterms\ME_SANIEL.c":78 1C maintext CODE
+"Z:\CPE3201_SANIEL\Midterms\ME_SANIEL.c":79 1F maintext CODE
+"Z:\CPE3201_SANIEL\Midterms\ME_SANIEL.c":80 20 maintext CODE
+"Z:\CPE3201_SANIEL\Midterms\ME_SANIEL.c":81 22 maintext CODE
+"Z:\CPE3201_SANIEL\Midterms\ME_SANIEL.c":83 25 maintext CODE
+"Z:\CPE3201_SANIEL\Midterms\ME_SANIEL.c":84 2A maintext CODE
+"Z:\CPE3201_SANIEL\Midterms\ME_SANIEL.c":85 30 maintext CODE
+"Z:\CPE3201_SANIEL\Midterms\ME_SANIEL.c":86 36 maintext CODE
+"Z:\CPE3201_SANIEL\Midterms\ME_SANIEL.c":87 3C maintext CODE
+"Z:\CPE3201_SANIEL\Midterms\ME_SANIEL.c":88 42 maintext CODE
+"Z:\CPE3201_SANIEL\Midterms\ME_SANIEL.c":89 48 maintext CODE
+"Z:\CPE3201_SANIEL\Midterms\ME_SANIEL.c":90 4E maintext CODE
+"Z:\CPE3201_SANIEL\Midterms\ME_SANIEL.c":91 54 maintext CODE
+"Z:\CPE3201_SANIEL\Midterms\ME_SANIEL.c":92 5A maintext CODE
+"Z:\CPE3201_SANIEL\Midterms\ME_SANIEL.c":93 60 maintext CODE
+"Z:\CPE3201_SANIEL\Midterms\ME_SANIEL.c":94 66 maintext CODE
+"Z:\CPE3201_SANIEL\Midterms\ME_SANIEL.c":96 6C maintext CODE
+"Z:\CPE3201_SANIEL\Midterms\ME_SANIEL.c":97 72 maintext CODE
+"Z:\CPE3201_SANIEL\Midterms\ME_SANIEL.c":99 73 maintext CODE
+"Z:\CPE3201_SANIEL\Midterms\ME_SANIEL.c":101 74 maintext CODE
+"Z:\CPE3201_SANIEL\Midterms\ME_SANIEL.c":102 7A maintext CODE
+"Z:\CPE3201_SANIEL\Midterms\ME_SANIEL.c":103 83 maintext CODE
+"Z:\CPE3201_SANIEL\Midterms\ME_SANIEL.c":104 89 maintext CODE
+"Z:\CPE3201_SANIEL\Midterms\ME_SANIEL.c":100 8F maintext CODE
+"Z:\CPE3201_SANIEL\Midterms\ME_SANIEL.c":99 95 maintext CODE
+"Z:\CPE3201_SANIEL\Midterms\ME_SANIEL.c":106 95 maintext CODE
+"Z:\CPE3201_SANIEL\Midterms\ME_SANIEL.c":52 98 text1 CODE
+"Z:\CPE3201_SANIEL\Midterms\ME_SANIEL.c":54 98 text1 CODE
+"Z:\CPE3201_SANIEL\Midterms\ME_SANIEL.c":55 9E text1 CODE
+"Z:\CPE3201_SANIEL\Midterms\ME_SANIEL.c":56 A4 text1 CODE
+"Z:\CPE3201_SANIEL\Midterms\ME_SANIEL.c":57 AA text1 CODE
+"Z:\CPE3201_SANIEL\Midterms\ME_SANIEL.c":58 B0 text1 CODE
+"Z:\CPE3201_SANIEL\Midterms\ME_SANIEL.c":59 B6 text1 CODE
+"Z:\CPE3201_SANIEL\Midterms\ME_SANIEL.c":60 BC text1 CODE
+"Z:\CPE3201_SANIEL\Midterms\ME_SANIEL.c":63 C0 text1 CODE
+"Z:\CPE3201_SANIEL\Midterms\ME_SANIEL.c":20 C1 text4 CODE
+"Z:\CPE3201_SANIEL\Midterms\ME_SANIEL.c":22 C1 text4 CODE
+"Z:\CPE3201_SANIEL\Midterms\ME_SANIEL.c":23 CD text4 CODE
+"Z:\CPE3201_SANIEL\Midterms\ME_SANIEL.c":22 E3 text4 CODE
+"Z:\CPE3201_SANIEL\Midterms\ME_SANIEL.c":42 EA text2 CODE
+"Z:\CPE3201_SANIEL\Midterms\ME_SANIEL.c":44 EB text2 CODE
+"Z:\CPE3201_SANIEL\Midterms\ME_SANIEL.c":45 EF text2 CODE
+"Z:\CPE3201_SANIEL\Midterms\ME_SANIEL.c":46 F0 text2 CODE
+"Z:\CPE3201_SANIEL\Midterms\ME_SANIEL.c":47 F1 text2 CODE
+"Z:\CPE3201_SANIEL\Midterms\ME_SANIEL.c":48 F2 text2 CODE
+"Z:\CPE3201_SANIEL\Midterms\ME_SANIEL.c":49 F9 text2 CODE
+"Z:\CPE3201_SANIEL\Midterms\ME_SANIEL.c":50 FC text2 CODE
+"Z:\CPE3201_SANIEL\Midterms\ME_SANIEL.c":65 FD text3 CODE
+"Z:\CPE3201_SANIEL\Midterms\ME_SANIEL.c":67 FE text3 CODE
+"Z:\CPE3201_SANIEL\Midterms\ME_SANIEL.c":68 102 text3 CODE
+"Z:\CPE3201_SANIEL\Midterms\ME_SANIEL.c":69 103 text3 CODE
+"Z:\CPE3201_SANIEL\Midterms\ME_SANIEL.c":70 104 text3 CODE
+"Z:\CPE3201_SANIEL\Midterms\ME_SANIEL.c":71 105 text3 CODE
+"Z:\CPE3201_SANIEL\Midterms\ME_SANIEL.c":72 10C text3 CODE
+"Z:\CPE3201_SANIEL\Midterms\ME_SANIEL.c":73 10F text3 CODE
+"Z:\CPE3201_SANIEL\Midterms\ME_SANIEL.c":27 110 text5 CODE
+"Z:\CPE3201_SANIEL\Midterms\ME_SANIEL.c":30 110 text5 CODE
+"Z:\CPE3201_SANIEL\Midterms\ME_SANIEL.c":31 112 text5 CODE
+"Z:\CPE3201_SANIEL\Midterms\ME_SANIEL.c":33 113 text5 CODE
+"Z:\CPE3201_SANIEL\Midterms\ME_SANIEL.c":36 115 text5 CODE
+"Z:\CPE3201_SANIEL\Midterms\ME_SANIEL.c":37 116 text5 CODE
+"Z:\CPE3201_SANIEL\Midterms\ME_SANIEL.c":39 117 text5 CODE
+$startup.obj
+"Z:\CPE3201_SANIEL\Midterms\startup.as":40 0 functab CODE
+"Z:\CPE3201_SANIEL\Midterms\startup.as":41 0 functab CODE
+"Z:\CPE3201_SANIEL\Midterms\startup.as":42 0 functab CODE
+"Z:\CPE3201_SANIEL\Midterms\startup.as":43 0 functab CODE
+"Z:\CPE3201_SANIEL\Midterms\startup.as":44 0 functab CODE
+"Z:\CPE3201_SANIEL\Midterms\startup.as":45 0 functab CODE
+"Z:\CPE3201_SANIEL\Midterms\startup.as":64 0 reset_vec CODE
+"Z:\CPE3201_SANIEL\Midterms\startup.as":69 0 reset_vec CODE
+"Z:\CPE3201_SANIEL\Midterms\startup.as":74 12 init CODE
+"Z:\CPE3201_SANIEL\Midterms\startup.as":77 12 end_init CODE
+# %SYMTAB Section
+# An enumeration of all symbols in the program.
+# The beginning of the section is indicated by %SYMTAB.
+# Each line describes a single symbol as follows:
+#    <label> <value> [-]<load-adj> <class> <space> <psect> <file-name>
+# The value and load-adj are both in unqualified hexadecimal.
+# All other numeric values are in decimal.  The load-adj is the
+# quantity one needs to add to the symbol value in order to obtain the load
+# address of the symbol.  This value may be signed. If the symbol
+# was defined in a psect then <psect> will be "-". File-name
+# is the name of the object file in which the symbol was defined.
+%SYMTAB
+_current_count 27 0 BANK0 1 bssBANK0 MIDTERM-PRACTICAL.obj
+_j 78 0 COMMON 1 bssCOMMON MIDTERM-PRACTICAL.obj
+__CFG_WRT$OFF 0 0 ABS 0 - MIDTERM-PRACTICAL.obj
+_RB0 30 0 ABS 0 - MIDTERM-PRACTICAL.obj
+_RB5 35 0 ABS 0 - MIDTERM-PRACTICAL.obj
+_RB6 36 0 ABS 0 - MIDTERM-PRACTICAL.obj
+_RB7 37 0 ABS 0 - MIDTERM-PRACTICAL.obj
+__S0 2008 0 ABS 0 - -
+__S1 7A 0 ABS 0 - -
+__S2 0 0 ABS 0 - -
+__S3 0 0 ABS 0 - -
+_ISR 220 0 CODE 0 text5 MIDTERM-PRACTICAL.obj
+__Hintentry 24 0 CODE 0 intentry -
+__Lintentry 8 0 CODE 0 intentry -
+__CFG_BOREN$ON 0 0 ABS 0 - MIDTERM-PRACTICAL.obj
+__pintentry 8 0 CODE 0 intentry MIDTERM-PRACTICAL.obj
+__CFG_PWRTE$ON 0 0 ABS 0 - MIDTERM-PRACTICAL.obj
+_T0IF 5A 0 ABS 0 - MIDTERM-PRACTICAL.obj
+_INTF 59 0 ABS 0 - MIDTERM-PRACTICAL.obj
+_main 38 0 CODE 0 maintext MIDTERM-PRACTICAL.obj
+___sp 0 0 STACK 2 stack startup.obj
+btemp 7E 0 ABS 0 - MIDTERM-PRACTICAL.obj
+ltemp 7E 0 ABS 0 - MIDTERM-PRACTICAL.obj
+ttemp 7E 0 ABS 0 - MIDTERM-PRACTICAL.obj
+wtemp 7E 0 ABS 0 - MIDTERM-PRACTICAL.obj
+start 24 0 CODE 0 init startup.obj
+_TRISB 86 0 ABS 0 - MIDTERM-PRACTICAL.obj
+_TRISC 87 0 ABS 0 - MIDTERM-PRACTICAL.obj
+reset_vec 0 0 CODE 0 reset_vec startup.obj
+_TRISD 88 0 ABS 0 - MIDTERM-PRACTICAL.obj
+_PORTB 6 0 ABS 0 - MIDTERM-PRACTICAL.obj
+_PORTC 7 0 ABS 0 - MIDTERM-PRACTICAL.obj
+ltemp0 7E 0 ABS 0 - MIDTERM-PRACTICAL.obj
+ttemp0 7E 0 ABS 0 - MIDTERM-PRACTICAL.obj
+wtemp0 7E 0 ABS 0 - MIDTERM-PRACTICAL.obj
+ltemp1 82 0 ABS 0 - MIDTERM-PRACTICAL.obj
+ttemp1 81 0 ABS 0 - MIDTERM-PRACTICAL.obj
+wtemp1 80 0 ABS 0 - MIDTERM-PRACTICAL.obj
+ltemp2 86 0 ABS 0 - MIDTERM-PRACTICAL.obj
+ttemp2 84 0 ABS 0 - MIDTERM-PRACTICAL.obj
+wtemp2 82 0 ABS 0 - MIDTERM-PRACTICAL.obj
+ltemp3 80 0 ABS 0 - MIDTERM-PRACTICAL.obj
+ttemp3 87 0 ABS 0 - MIDTERM-PRACTICAL.obj
+wtemp3 84 0 ABS 0 - MIDTERM-PRACTICAL.obj
+ttemp4 7F 0 ABS 0 - MIDTERM-PRACTICAL.obj
+wtemp4 86 0 ABS 0 - MIDTERM-PRACTICAL.obj
+wtemp5 88 0 ABS 0 - MIDTERM-PRACTICAL.obj
+__end_of_delay 1D4 0 CODE 0 text4 MIDTERM-PRACTICAL.obj
+wtemp6 7F 0 ABS 0 - MIDTERM-PRACTICAL.obj
+interrupt_function 8 0 CODE 0 intentry MIDTERM-PRACTICAL.obj
+__Hconfig 4010 0 CONFIG 0 config -
+__Lconfig 400E 0 CONFIG 0 config -
+__Hram 0 0 ABS 0 ram -
+__Lram 0 0 ABS 0 ram -
+_delay 182 0 CODE 0 text4 MIDTERM-PRACTICAL.obj
+_dataCtrl 1FA 0 CODE 0 text3 MIDTERM-PRACTICAL.obj
+__end_of_ISR 244 0 CODE 0 text5 MIDTERM-PRACTICAL.obj
+_instCtrl 1D4 0 CODE 0 text2 MIDTERM-PRACTICAL.obj
+__Hfunctab 0 0 CODE 0 functab -
+__Lfunctab 0 0 CODE 0 functab -
+__Hcommon 0 0 ABS 0 common -
+__Lcommon 0 0 ABS 0 common -
+__Heeprom_data 0 0 EEDATA 3 eeprom_data -
+__Leeprom_data 0 0 EEDATA 3 eeprom_data -
+___int_sp 0 0 STACK 2 stack startup.obj
+__Habs1 0 0 ABS 0 abs1 -
+__Labs1 0 0 ABS 0 abs1 -
+__Hsfr0 0 0 ABS 0 sfr0 -
+__Lsfr0 0 0 ABS 0 sfr0 -
+__Hsfr1 0 0 ABS 0 sfr1 -
+__Lsfr1 0 0 ABS 0 sfr1 -
+__Hsfr2 0 0 ABS 0 sfr2 -
+__Lsfr2 0 0 ABS 0 sfr2 -
+__Hsfr3 0 0 ABS 0 sfr3 -
+__Lsfr3 0 0 ABS 0 sfr3 -
+__size_of_delay 0 0 ABS 0 - MIDTERM-PRACTICAL.obj
+delay@i 20 0 BANK0 1 cstackBANK0 MIDTERM-PRACTICAL.obj
+delay@k 22 0 BANK0 1 cstackBANK0 MIDTERM-PRACTICAL.obj
+__Hcode 0 0 ABS 0 code -
+__Lcode 0 0 ABS 0 code -
+stackhi 0 0 ABS 0 - startup.obj
+__HcstackBANK0 0 0 ABS 0 cstackBANK0 -
+__LcstackBANK0 0 0 ABS 0 cstackBANK0 -
+__pcstackBANK0 20 0 BANK0 1 cstackBANK0 MIDTERM-PRACTICAL.obj
+stacklo 0 0 ABS 0 - startup.obj
+saved_w 7E 0 ABS 0 - MIDTERM-PRACTICAL.obj
+__Hinit 24 0 CODE 0 init -
+__Linit 24 0 CODE 0 init -
+__end_of_main 130 0 CODE 0 maintext MIDTERM-PRACTICAL.obj
+__Htext 0 0 ABS 0 text -
+__Ltext 0 0 ABS 0 text -
+end_of_initialization 30 0 CODE 0 cinit MIDTERM-PRACTICAL.obj
+__size_of_ISR 0 0 ABS 0 - MIDTERM-PRACTICAL.obj
+__end_of_instCtrl 1FA 0 CODE 0 text2 MIDTERM-PRACTICAL.obj
+__size_of_initLCD 0 0 ABS 0 - MIDTERM-PRACTICAL.obj
+__CFG_FOSC$XT 0 0 ABS 0 - MIDTERM-PRACTICAL.obj
+__Hstrings 0 0 ABS 0 strings -
+__Lstrings 0 0 ABS 0 strings -
+_initLCD 130 0 CODE 0 text1 MIDTERM-PRACTICAL.obj
+__Hbank0 0 0 ABS 0 bank0 -
+__Lbank0 0 0 ABS 0 bank0 -
+__Hbank1 0 0 ABS 0 bank1 -
+__Lbank1 0 0 ABS 0 bank1 -
+__Hbank2 0 0 ABS 0 bank2 -
+__Lbank2 0 0 ABS 0 bank2 -
+__end_of_dataCtrl 220 0 CODE 0 text3 MIDTERM-PRACTICAL.obj
+instCtrl@data 76 0 COMMON 1 cstackCOMMON MIDTERM-PRACTICAL.obj
+__Hbank3 0 0 ABS 0 bank3 -
+__Lbank3 0 0 ABS 0 bank3 -
+___latbits 2 0 ABS 0 - MIDTERM-PRACTICAL.obj
+__Hpowerup 0 0 CODE 0 powerup -
+__Lpowerup 0 0 CODE 0 powerup -
+main@count 25 0 BANK0 1 cstackBANK0 MIDTERM-PRACTICAL.obj
+__ptext0 0 0 CODE 0 text0 MIDTERM-PRACTICAL.obj
+__ptext1 130 0 CODE 0 text1 MIDTERM-PRACTICAL.obj
+__ptext2 1D4 0 CODE 0 text2 MIDTERM-PRACTICAL.obj
+__ptext3 1FA 0 CODE 0 text3 MIDTERM-PRACTICAL.obj
+__ptext4 182 0 CODE 0 text4 MIDTERM-PRACTICAL.obj
+__ptext5 220 0 CODE 0 text5 MIDTERM-PRACTICAL.obj
+__Hclrtext 0 0 ABS 0 clrtext -
+__Lclrtext 0 0 ABS 0 clrtext -
+main@my_count 24 0 BANK0 1 cstackBANK0 MIDTERM-PRACTICAL.obj
+__end_of__initialization 30 0 CODE 0 cinit MIDTERM-PRACTICAL.obj
+__Hidloc 0 0 IDLOC 0 idloc -
+__Lidloc 0 0 IDLOC 0 idloc -
+__Hstack 0 0 STACK 2 stack -
+__Lstack 0 0 STACK 2 stack -
+__Hspace_0 2008 0 ABS 0 - -
+__Lspace_0 0 0 ABS 0 - -
+delay@ms 74 0 COMMON 1 cstackCOMMON MIDTERM-PRACTICAL.obj
+__Hspace_1 7A 0 ABS 0 - -
+__Lspace_1 0 0 ABS 0 - -
+__Hspace_2 0 0 ABS 0 - -
+__Lspace_2 0 0 ABS 0 - -
+__Hcinit 38 0 CODE 0 cinit -
+__Lcinit 2A 0 CODE 0 cinit -
+__Hspace_3 0 0 ABS 0 - -
+__Lspace_3 0 0 ABS 0 - -
+__size_of_main 0 0 ABS 0 - MIDTERM-PRACTICAL.obj
+__HbssBANK0 0 0 ABS 0 bssBANK0 -
+__LbssBANK0 0 0 ABS 0 bssBANK0 -
+__pbssBANK0 27 0 BANK0 1 bssBANK0 MIDTERM-PRACTICAL.obj
+__HbssCOMMON 0 0 ABS 0 bssCOMMON -
+__LbssCOMMON 0 0 ABS 0 bssCOMMON -
+__pbssCOMMON 78 0 COMMON 1 bssCOMMON MIDTERM-PRACTICAL.obj
+__Hend_init 2A 0 CODE 0 end_init -
+__Lend_init 24 0 CODE 0 end_init -
+__Hreset_vec 6 0 CODE 0 reset_vec -
+__Lreset_vec 0 0 CODE 0 reset_vec -
+__size_of_instCtrl 0 0 ABS 0 - MIDTERM-PRACTICAL.obj
+intlevel0 0 0 CODE 0 functab startup.obj
+__CFG_WDTE$OFF 0 0 ABS 0 - MIDTERM-PRACTICAL.obj
+intlevel1 0 0 CODE 0 functab startup.obj
+intlevel2 0 0 CODE 0 functab startup.obj
+intlevel3 0 0 CODE 0 functab startup.obj
+intlevel4 0 0 CODE 0 functab startup.obj
+intlevel5 0 0 CODE 0 functab startup.obj
+__HcstackCOMMON 0 0 ABS 0 cstackCOMMON -
+__LcstackCOMMON 0 0 ABS 0 cstackCOMMON -
+__pcstackCOMMON 70 0 COMMON 1 cstackCOMMON MIDTERM-PRACTICAL.obj
+__CFG_CPD$OFF 0 0 ABS 0 - MIDTERM-PRACTICAL.obj
+start_initialization 2A 0 CODE 0 cinit MIDTERM-PRACTICAL.obj
+__Hmaintext 0 0 ABS 0 maintext -
+__Lmaintext 0 0 ABS 0 maintext -
+__pmaintext 38 0 CODE 0 maintext MIDTERM-PRACTICAL.obj
+__initialization 2A 0 CODE 0 cinit MIDTERM-PRACTICAL.obj
+__end_of_initLCD 182 0 CODE 0 text1 MIDTERM-PRACTICAL.obj
+dataCtrl@b 76 0 COMMON 1 cstackCOMMON MIDTERM-PRACTICAL.obj
+__CFG_CP$OFF 0 0 ABS 0 - MIDTERM-PRACTICAL.obj
+__size_of_dataCtrl 0 0 ABS 0 - MIDTERM-PRACTICAL.obj
+__CFG_LVP$OFF 0 0 ABS 0 - MIDTERM-PRACTICAL.obj
+# %SPLITSTAB Section
+# This section enumerates all the psect splits performed by the assembler.
+# The beginning of the section is indicated by %SPLITSTAB.
+# Each line is a record a particular split, where the parent psect in on
+# the left and the child on the right.  Note that a child psect is always
+# split form the top of the parent psect. All splits from a given parent
+# are listed in the order in which they occurred.
+%SPLITSTAB
+# %DABS Section
+# This section contains a table of all usuage of the assember
+# directive DABS in the program. Each line has the following format:
+#   <name> <space> <address> <size>
+# If the DABS was originally labelled then that shall be <name>,
+# otherwise name will be "-".  The <space> number is in decimal.
+# <address> and <size> are in byte units as unqaulified hexadecimal
+%DABS
+- 1 7E 2
+# %SEGMENTS Section
+# This sections enumerates the segments of the program.  Each segment
+# is described on a single line as follows:
+#    <name> <space> <link address> <file address> <size> <delta>
+# Addresses and size are in unqualified hexadecimal.  The link address
+# and size are in units of delta. The file address is in units of bytes.
+# All other numeric quantities are in decimal.
+%SEGMENTS
+reset_vec 0 0 0 3 2
+intentry 0 4 8 11E 2
+config 0 2007 400E 1 2
+cstackCOMMON 1 70 70 A 1
+cstackBANK0 1 20 20 8 1
