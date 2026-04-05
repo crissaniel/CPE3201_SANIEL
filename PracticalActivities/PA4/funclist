@@ -1,0 +1,13 @@
+_printNumber: CODE, 29 0 115
+_printString: CODE, 507 0 37
+__stringtab: STRING, 544 0 16
+__stringdata: STRING, 560 0 17
+_ISR: CODE, 464 0 43
+_main: CODE, 240 0 95
+_instCtrl: CODE, 594 0 17
+_dataCtrl: CODE, 577 0 17
+__initialization: CODE, 21 0 4
+___lldiv: CODE, 144 0 96
+___llmod: CODE, 335 0 78
+_initLCD: CODE, 413 0 51
+Total: 586
