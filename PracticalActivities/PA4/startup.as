@@ -7,7 +7,7 @@
 	;
 	; Compiler options:
 	;
-	; -oLE4-6.cof -mLE4-6.map --summary=default --output=default LE4-4.p1 \
+	; -oLE4-7.cof -mLE4-7.map --summary=default --output=default LE4-7.p1 \
 	; --chip=16F877A -P --runtime=default --opt=default -N-1 -D__DEBUG=1 -g \
 	; --asmlist --errformat=Error   [%n] %f; %l.%c %s \
 	; --msgformat=Advisory[%n] %s --warnformat=Warning [%n] %f; %l.%c %s
@@ -62,11 +62,7 @@ intlevel5:
 	psect	reset_vec
 reset_vec:
 	; No powerup routine
-	global start
-
-; jump to start
-	goto	start & 0x7FF | (reset_vec & not 0x7FF)
-
+	; No interrupt routine
 
 
 	psect	init

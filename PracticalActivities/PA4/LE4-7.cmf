@@ -1,0 +1,358 @@
+%CMF
+# %PSECTS Section
+# For each object file, details of its psects are enumerated here.
+# The begining of the section is indicated by %PSECTS.  The first
+# line indicates the name of the first object file, e.g.
+#    $foo.obj
+# Each line that follows describes a psect in that object file, until
+# the next object file.  The lines that describe a psect have the
+# format:
+#    <psect name> <class name> <space> <link address> <load addresses> <length> <delta>
+# All addresses and the length are given in unqualified hexadecimal
+# in delta units.  Any other numeric values are decimal.
+%PSECTS
+$startup.obj
+end_init CODE 0 0 0 3 2
+config CONFIG 0 2007 2007 1 2
+$LE4-7.obj
+cinit CODE 0 7EE 7EE 12 2
+text2 CODE 0 6F4 6F4 11 2
+text1 CODE 0 73A 73A 49 2
+maintext CODE 0 783 783 6B 2
+cstackCOMMON COMMON 1 70 70 E 1
+inittext CODE 0 705 705 11 2
+dataBANK0 BANK0 1 20 20 24 1
+bssBANK0 BANK0 1 44 44 2 1
+idataBANK0 CODE 0 716 716 24 2
+# %UNUSED Section
+# This section enumerates the unused ranges of each CLASS. Each entry
+# is described on a single line as follows:
+#    <class name> <range> <delta>
+# Addresses given in the range are in hexadecimal and units of delta.
+%UNUSED
+BANK0 0046-006F 1
+BANK1 00A0-00EF 1
+BANK2 0110-016F 1
+BANK3 0190-01EF 1
+CODE 0003-06F3 2
+CODE 0800-1FFF 2
+CONST 0003-06F3 2
+CONST 0800-1FFF 2
+EEDATA 2100-21FF 2
+ENTRY 0003-06F3 2
+ENTRY 0800-1FFF 2
+IDLOC 2000-2003 2
+RAM 0046-006F 1
+RAM 00A0-00EF 1
+RAM 0110-016F 1
+RAM 0190-01EF 1
+SFR0 0000-001F 1
+SFR1 0080-009F 1
+SFR2 0100-010F 1
+SFR3 0180-018F 1
+STACK 0110-016F 1
+STRCODE 0003-06F3 2
+STRCODE 0800-1FFF 2
+STRING 0003-06F3 2
+STRING 0800-1FFF 2
+# %LINETAB Section
+# This section enumerates the file/line to address mappings.
+# The beginning of the section is indicated by %LINETAB.
+# The first line indicates the name of the first object file, e.g.
+#   $foo.obj
+# Each line that follows describes a single mapping until the next
+# object file.  Mappings have the following format:
+#    <file name>:<line number> <address> <psect name> <class name>
+# The address is absolute and given given in unqualified hex 
+# in delta units of the psect. All mappings within an object file
+# are in ascending order of addresses.
+# All other numeric values are in decimal.
+%LINETAB
+$LE4-7.obj
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\Umul8.c":4 6F4 text2 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\Umul8.c":6 6F5 text2 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\Umul8.c":43 6F6 text2 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\Umul8.c":44 6F8 text2 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\Umul8.c":45 6FC text2 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\Umul8.c":46 6FE text2 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\Umul8.c":47 700 text2 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\Umul8.c":50 703 text2 CODE
+"C:\Users\ASUS\Downloads\Embedded\PA4\LE4-7.as":317 705 inittext CODE
+"C:\Users\ASUS\Downloads\Embedded\PA4\LE4-7.as":318 705 inittext CODE
+"C:\Users\ASUS\Downloads\Embedded\PA4\LE4-7.as":319 706 inittext CODE
+"C:\Users\ASUS\Downloads\Embedded\PA4\LE4-7.as":320 707 inittext CODE
+"C:\Users\ASUS\Downloads\Embedded\PA4\LE4-7.as":321 708 inittext CODE
+"C:\Users\ASUS\Downloads\Embedded\PA4\LE4-7.as":328 709 inittext CODE
+"C:\Users\ASUS\Downloads\Embedded\PA4\LE4-7.as":329 709 inittext CODE
+"C:\Users\ASUS\Downloads\Embedded\PA4\LE4-7.as":330 70C inittext CODE
+"C:\Users\ASUS\Downloads\Embedded\PA4\LE4-7.as":331 70D inittext CODE
+"C:\Users\ASUS\Downloads\Embedded\PA4\LE4-7.as":332 70E inittext CODE
+"C:\Users\ASUS\Downloads\Embedded\PA4\LE4-7.as":333 70F inittext CODE
+"C:\Users\ASUS\Downloads\Embedded\PA4\LE4-7.as":334 710 inittext CODE
+"C:\Users\ASUS\Downloads\Embedded\PA4\LE4-7.as":335 711 inittext CODE
+"C:\Users\ASUS\Downloads\Embedded\PA4\LE4-7.as":336 712 inittext CODE
+"C:\Users\ASUS\Downloads\Embedded\PA4\LE4-7.as":337 713 inittext CODE
+"C:\Users\ASUS\Downloads\Embedded\PA4\LE4-7.as":338 714 inittext CODE
+"C:\Users\ASUS\Downloads\Embedded\PA4\LE4-7.as":339 715 inittext CODE
+"C:\Users\ASUS\Downloads\Embedded\PA4\LE4-7.c":27 73A text1 CODE
+"C:\Users\ASUS\Downloads\Embedded\PA4\LE4-7.c":28 73B text1 CODE
+"C:\Users\ASUS\Downloads\Embedded\PA4\LE4-7.c":29 743 text1 CODE
+"C:\Users\ASUS\Downloads\Embedded\PA4\LE4-7.c":31 74A text1 CODE
+"C:\Users\ASUS\Downloads\Embedded\PA4\LE4-7.c":32 767 text1 CODE
+"C:\Users\ASUS\Downloads\Embedded\PA4\LE4-7.c":33 775 text1 CODE
+"C:\Users\ASUS\Downloads\Embedded\PA4\LE4-7.c":34 782 text1 CODE
+"C:\Users\ASUS\Downloads\Embedded\PA4\LE4-7.c":36 783 maintext CODE
+"C:\Users\ASUS\Downloads\Embedded\PA4\LE4-7.c":38 783 maintext CODE
+"C:\Users\ASUS\Downloads\Embedded\PA4\LE4-7.c":39 786 maintext CODE
+"C:\Users\ASUS\Downloads\Embedded\PA4\LE4-7.c":42 787 maintext CODE
+"C:\Users\ASUS\Downloads\Embedded\PA4\LE4-7.c":45 78A maintext CODE
+"C:\Users\ASUS\Downloads\Embedded\PA4\LE4-7.c":48 794 maintext CODE
+"C:\Users\ASUS\Downloads\Embedded\PA4\LE4-7.c":49 797 maintext CODE
+"C:\Users\ASUS\Downloads\Embedded\PA4\LE4-7.c":52 79A maintext CODE
+"C:\Users\ASUS\Downloads\Embedded\PA4\LE4-7.c":53 79B maintext CODE
+"C:\Users\ASUS\Downloads\Embedded\PA4\LE4-7.c":58 79F maintext CODE
+"C:\Users\ASUS\Downloads\Embedded\PA4\LE4-7.c":59 7A1 maintext CODE
+"C:\Users\ASUS\Downloads\Embedded\PA4\LE4-7.c":60 7AE maintext CODE
+"C:\Users\ASUS\Downloads\Embedded\PA4\LE4-7.c":61 7B4 maintext CODE
+"C:\Users\ASUS\Downloads\Embedded\PA4\LE4-7.c":63 7B8 maintext CODE
+"C:\Users\ASUS\Downloads\Embedded\PA4\LE4-7.c":64 7C2 maintext CODE
+"C:\Users\ASUS\Downloads\Embedded\PA4\LE4-7.c":65 7C6 maintext CODE
+"C:\Users\ASUS\Downloads\Embedded\PA4\LE4-7.c":68 7C6 maintext CODE
+"C:\Users\ASUS\Downloads\Embedded\PA4\LE4-7.c":69 7C8 maintext CODE
+"C:\Users\ASUS\Downloads\Embedded\PA4\LE4-7.c":70 7D5 maintext CODE
+"C:\Users\ASUS\Downloads\Embedded\PA4\LE4-7.c":71 7DB maintext CODE
+"C:\Users\ASUS\Downloads\Embedded\PA4\LE4-7.c":73 7DF maintext CODE
+"C:\Users\ASUS\Downloads\Embedded\PA4\LE4-7.c":74 7E9 maintext CODE
+"C:\Users\ASUS\Downloads\Embedded\PA4\LE4-7.as":273 7EE cinit CODE
+"C:\Users\ASUS\Downloads\Embedded\PA4\LE4-7.as":276 7EE cinit CODE
+"C:\Users\ASUS\Downloads\Embedded\PA4\LE4-7.as":310 7EE cinit CODE
+"C:\Users\ASUS\Downloads\Embedded\PA4\LE4-7.as":311 7EF cinit CODE
+"C:\Users\ASUS\Downloads\Embedded\PA4\LE4-7.as":343 7F0 cinit CODE
+"C:\Users\ASUS\Downloads\Embedded\PA4\LE4-7.as":344 7F1 cinit CODE
+"C:\Users\ASUS\Downloads\Embedded\PA4\LE4-7.as":345 7F2 cinit CODE
+"C:\Users\ASUS\Downloads\Embedded\PA4\LE4-7.as":346 7F3 cinit CODE
+"C:\Users\ASUS\Downloads\Embedded\PA4\LE4-7.as":347 7F4 cinit CODE
+"C:\Users\ASUS\Downloads\Embedded\PA4\LE4-7.as":348 7F5 cinit CODE
+"C:\Users\ASUS\Downloads\Embedded\PA4\LE4-7.as":349 7F6 cinit CODE
+"C:\Users\ASUS\Downloads\Embedded\PA4\LE4-7.as":350 7F7 cinit CODE
+"C:\Users\ASUS\Downloads\Embedded\PA4\LE4-7.as":351 7F8 cinit CODE
+"C:\Users\ASUS\Downloads\Embedded\PA4\LE4-7.as":352 7F9 cinit CODE
+"C:\Users\ASUS\Downloads\Embedded\PA4\LE4-7.as":358 7FC cinit CODE
+"C:\Users\ASUS\Downloads\Embedded\PA4\LE4-7.as":359 7FC cinit CODE
+"C:\Users\ASUS\Downloads\Embedded\PA4\LE4-7.as":360 7FD cinit CODE
+$startup.obj
+"C:\Users\ASUS\Downloads\Embedded\PA4\startup.as":39 0 functab CODE
+"C:\Users\ASUS\Downloads\Embedded\PA4\startup.as":40 0 functab CODE
+"C:\Users\ASUS\Downloads\Embedded\PA4\startup.as":41 0 functab CODE
+"C:\Users\ASUS\Downloads\Embedded\PA4\startup.as":42 0 functab CODE
+"C:\Users\ASUS\Downloads\Embedded\PA4\startup.as":43 0 functab CODE
+"C:\Users\ASUS\Downloads\Embedded\PA4\startup.as":44 0 functab CODE
+"C:\Users\ASUS\Downloads\Embedded\PA4\startup.as":63 0 reset_vec CODE
+"C:\Users\ASUS\Downloads\Embedded\PA4\startup.as":69 0 init CODE
+"C:\Users\ASUS\Downloads\Embedded\PA4\startup.as":72 0 end_init CODE
+# %SYMTAB Section
+# An enumeration of all symbols in the program.
+# The beginning of the section is indicated by %SYMTAB.
+# Each line describes a single symbol as follows:
+#    <label> <value> [-]<load-adj> <class> <space> <psect> <file-name>
+# The value and load-adj are both in unqualified hexadecimal.
+# All other numeric values are in decimal.  The load-adj is the
+# quantity one needs to add to the symbol value in order to obtain the load
+# address of the symbol.  This value may be signed. If the symbol
+# was defined in a psect then <psect> will be "-". File-name
+# is the name of the object file in which the symbol was defined.
+%SYMTAB
+__CFG_WRT$OFF 0 0 ABS 0 - LE4-7.obj
+_PR2 92 0 ABS 0 - LE4-7.obj
+__S0 2008 0 ABS 0 - -
+__S1 7E 0 ABS 0 - -
+__S2 0 0 ABS 0 - -
+__S3 0 0 ABS 0 - -
+__Hintentry 0 0 CODE 0 intentry -
+__Lintentry 0 0 CODE 0 intentry -
+__CFG_BOREN$ON 0 0 ABS 0 - LE4-7.obj
+__CFG_PWRTE$ON 0 0 ABS 0 - LE4-7.obj
+_TMR2 11 0 ABS 0 - LE4-7.obj
+_prescalerTable 41 0 BANK0 1 dataBANK0 LE4-7.obj
+_main F06 0 CODE 0 maintext LE4-7.obj
+___sp 0 0 STACK 2 stack startup.obj
+btemp 7E 0 ABS 0 - LE4-7.obj
+ltemp 7E 0 ABS 0 - LE4-7.obj
+ttemp 7E 0 ABS 0 - LE4-7.obj
+wtemp 7E 0 ABS 0 - LE4-7.obj
+start 0 0 CODE 0 init startup.obj
+reset_vec 0 0 CODE 0 reset_vec startup.obj
+_T2CON 12 0 ABS 0 - LE4-7.obj
+ltemp0 7E 0 ABS 0 - LE4-7.obj
+ttemp0 7E 0 ABS 0 - LE4-7.obj
+wtemp0 7E 0 ABS 0 - LE4-7.obj
+ltemp1 82 0 ABS 0 - LE4-7.obj
+ttemp1 81 0 ABS 0 - LE4-7.obj
+wtemp1 80 0 ABS 0 - LE4-7.obj
+ltemp2 86 0 ABS 0 - LE4-7.obj
+ttemp2 84 0 ABS 0 - LE4-7.obj
+wtemp2 82 0 ABS 0 - LE4-7.obj
+ltemp3 80 0 ABS 0 - LE4-7.obj
+ttemp3 87 0 ABS 0 - LE4-7.obj
+wtemp3 84 0 ABS 0 - LE4-7.obj
+ttemp4 7F 0 ABS 0 - LE4-7.obj
+wtemp4 86 0 ABS 0 - LE4-7.obj
+wtemp5 88 0 ABS 0 - LE4-7.obj
+wtemp6 7F 0 ABS 0 - LE4-7.obj
+__Hconfig 4010 0 CONFIG 0 config -
+__Lconfig 400E 0 CONFIG 0 config -
+__Hram 0 0 ABS 0 ram -
+__Lram 0 0 ABS 0 ram -
+__Hfunctab 0 0 CODE 0 functab -
+__Lfunctab 0 0 CODE 0 functab -
+__Hcommon 0 0 ABS 0 common -
+__Lcommon 0 0 ABS 0 common -
+__Heeprom_data 0 0 EEDATA 3 eeprom_data -
+__Leeprom_data 0 0 EEDATA 3 eeprom_data -
+___int_sp 0 0 STACK 2 stack startup.obj
+_CCPR1L 15 0 ABS 0 - LE4-7.obj
+_freqTable 3E 0 BANK0 1 dataBANK0 LE4-7.obj
+_dutyTable 20 0 BANK0 1 dataBANK0 LE4-7.obj
+__Habs1 0 0 ABS 0 abs1 -
+__Labs1 0 0 ABS 0 abs1 -
+__Hsfr0 0 0 ABS 0 sfr0 -
+__Lsfr0 0 0 ABS 0 sfr0 -
+__Hsfr1 0 0 ABS 0 sfr1 -
+__Lsfr1 0 0 ABS 0 sfr1 -
+__Hsfr2 0 0 ABS 0 sfr2 -
+__Lsfr2 0 0 ABS 0 sfr2 -
+__Hsfr3 0 0 ABS 0 sfr3 -
+__Lsfr3 0 0 ABS 0 sfr3 -
+_setPWM E74 0 CODE 0 text1 LE4-7.obj
+init_fetch0 E0A 0 CODE 0 inittext LE4-7.obj
+__Hcode 0 0 ABS 0 code -
+__Lcode 0 0 ABS 0 code -
+stackhi 0 0 ABS 0 - startup.obj
+stacklo 0 0 ABS 0 - startup.obj
+___bmul DE8 0 CODE 0 text2 LE4-7.obj
+__Hinit 0 0 CODE 0 init -
+__Linit 0 0 CODE 0 init -
+__end_of_main FDC 0 CODE 0 maintext LE4-7.obj
+__Htext 0 0 ABS 0 text -
+__Ltext 0 0 ABS 0 text -
+___bmul@multiplier 73 0 COMMON 1 cstackCOMMON LE4-7.obj
+__HdataBANK0 0 0 ABS 0 dataBANK0 -
+__LdataBANK0 0 0 ABS 0 dataBANK0 -
+__pdataBANK0 20 0 BANK0 1 dataBANK0 LE4-7.obj
+end_of_initialization FF8 0 CODE 0 cinit LE4-7.obj
+___bmul@multiplicand 70 0 COMMON 1 cstackCOMMON LE4-7.obj
+__CFG_FOSC$XT 0 0 ABS 0 - LE4-7.obj
+_freqIndex 45 0 BANK0 1 bssBANK0 LE4-7.obj
+_TRISBbits 86 0 ABS 0 - LE4-7.obj
+_TRISCbits 87 0 ABS 0 - LE4-7.obj
+_PORTBbits 6 0 ABS 0 - LE4-7.obj
+_PORTCbits 7 0 ABS 0 - LE4-7.obj
+__Hstrings 0 0 ABS 0 strings -
+__Lstrings 0 0 ABS 0 strings -
+_dutyIndex 44 0 BANK0 1 bssBANK0 LE4-7.obj
+_CCP1CON 17 0 ABS 0 - LE4-7.obj
+__Hbank0 0 0 ABS 0 bank0 -
+__Lbank0 0 0 ABS 0 bank0 -
+__Hbank1 0 0 ABS 0 bank1 -
+__Lbank1 0 0 ABS 0 bank1 -
+__Hbank2 0 0 ABS 0 bank2 -
+__Lbank2 0 0 ABS 0 bank2 -
+__Hbank3 0 0 ABS 0 bank3 -
+__Lbank3 0 0 ABS 0 bank3 -
+___latbits 2 0 ABS 0 - LE4-7.obj
+__Hpowerup 0 0 CODE 0 powerup -
+__Lpowerup 0 0 CODE 0 powerup -
+__ptext1 E74 0 CODE 0 text1 LE4-7.obj
+__ptext2 DE8 0 CODE 0 text2 LE4-7.obj
+__Hclrtext 0 0 ABS 0 clrtext -
+__Lclrtext 0 0 ABS 0 clrtext -
+__end_of__initialization FF8 0 CODE 0 cinit LE4-7.obj
+setPWM@dIdx 74 0 COMMON 1 cstackCOMMON LE4-7.obj
+setPWM@fIdx 7A 0 COMMON 1 cstackCOMMON LE4-7.obj
+__Hidloc 0 0 IDLOC 0 idloc -
+__Lidloc 0 0 IDLOC 0 idloc -
+__Hstack 0 0 STACK 2 stack -
+__Lstack 0 0 STACK 2 stack -
+__Hspace_0 2008 0 ABS 0 - -
+__Lspace_0 0 0 ABS 0 - -
+__Hspace_1 7E 0 ABS 0 - -
+__Lspace_1 0 0 ABS 0 - -
+__Hspace_2 0 0 ABS 0 - -
+__Lspace_2 0 0 ABS 0 - -
+__size_of_setPWM 0 0 ABS 0 - LE4-7.obj
+__Hcinit 1000 0 CODE 0 cinit -
+__Lcinit FDC 0 CODE 0 cinit -
+__Hspace_3 0 0 ABS 0 - -
+__Lspace_3 0 0 ABS 0 - -
+__size_of_main 0 0 ABS 0 - LE4-7.obj
+__HidataBANK0 0 0 ABS 0 idataBANK0 -
+__LidataBANK0 0 0 ABS 0 idataBANK0 -
+__pidataBANK0 E2C 0 CODE 0 idataBANK0 LE4-7.obj
+__HbssBANK0 0 0 ABS 0 bssBANK0 -
+__LbssBANK0 0 0 ABS 0 bssBANK0 -
+__pbssBANK0 44 0 BANK0 1 bssBANK0 LE4-7.obj
+__Hend_init 6 0 CODE 0 end_init -
+__Lend_init 0 0 CODE 0 end_init -
+__end_of_setPWM F06 0 CODE 0 text1 LE4-7.obj
+__Hreset_vec 0 0 CODE 0 reset_vec -
+__Lreset_vec 0 0 CODE 0 reset_vec -
+init_ram0 E12 0 CODE 0 inittext LE4-7.obj
+intlevel0 0 0 CODE 0 functab startup.obj
+__CFG_WDTE$OFF 0 0 ABS 0 - LE4-7.obj
+intlevel1 0 0 CODE 0 functab startup.obj
+intlevel2 0 0 CODE 0 functab startup.obj
+intlevel3 0 0 CODE 0 functab startup.obj
+intlevel4 0 0 CODE 0 functab startup.obj
+intlevel5 0 0 CODE 0 functab startup.obj
+__HcstackCOMMON 0 0 ABS 0 cstackCOMMON -
+__LcstackCOMMON 0 0 ABS 0 cstackCOMMON -
+__pcstackCOMMON 70 0 COMMON 1 cstackCOMMON LE4-7.obj
+__CFG_CPD$OFF 0 0 ABS 0 - LE4-7.obj
+start_initialization FDC 0 CODE 0 cinit LE4-7.obj
+__Hmaintext 0 0 ABS 0 maintext -
+__Lmaintext 0 0 ABS 0 maintext -
+__pmaintext F06 0 CODE 0 maintext LE4-7.obj
+__Hinittext 0 0 ABS 0 inittext -
+__Linittext 0 0 ABS 0 inittext -
+setPWM@dutyval 78 0 COMMON 1 cstackCOMMON LE4-7.obj
+__initialization FDC 0 CODE 0 cinit LE4-7.obj
+___bmul@product 72 0 COMMON 1 cstackCOMMON LE4-7.obj
+__CFG_CP$OFF 0 0 ABS 0 - LE4-7.obj
+__CFG_LVP$OFF 0 0 ABS 0 - LE4-7.obj
+__size_of___bmul 0 0 ABS 0 - LE4-7.obj
+__end_of___bmul E0A 0 CODE 0 text2 LE4-7.obj
+# %SPLITSTAB Section
+# This section enumerates all the psect splits performed by the assembler.
+# The beginning of the section is indicated by %SPLITSTAB.
+# Each line is a record a particular split, where the parent psect in on
+# the left and the child on the right.  Note that a child psect is always
+# split form the top of the parent psect. All splits from a given parent
+# are listed in the order in which they occurred.
+%SPLITSTAB
+# %DABS Section
+# This section contains a table of all usuage of the assember
+# directive DABS in the program. Each line has the following format:
+#   <name> <space> <address> <size>
+# If the DABS was originally labelled then that shall be <name>,
+# otherwise name will be "-".  The <space> number is in decimal.
+# <address> and <size> are in byte units as unqaulified hexadecimal
+%DABS
+- 1 7E 2
+# %SEGMENTS Section
+# This sections enumerates the segments of the program.  Each segment
+# is described on a single line as follows:
+#    <name> <space> <link address> <file address> <size> <delta>
+# Addresses and size are in unqualified hexadecimal.  The link address
+# and size are in units of delta. The file address is in units of bytes.
+# All other numeric quantities are in decimal.
+%SEGMENTS
+reset_vec 0 0 0 3 2
+cinit 0 7EE FDC 12 2
+config 0 2007 400E 1 2
+cstackCOMMON 1 70 70 E 1
+dataBANK0 1 20 20 26 1
+maintext 0 783 F06 6B 2
+text1 0 73A E74 49 2
+idataBANK0 0 716 E2C 24 2
+inittext 0 705 E0A 11 2
+text2 0 6F4 DE8 11 2
