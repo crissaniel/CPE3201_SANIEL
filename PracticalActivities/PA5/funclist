@@ -1,0 +1,8 @@
+___awdiv: CODE, 380 0 91
+___aldiv: CODE, 237 0 143
+___awmod: CODE, 471 0 77
+_main: CODE, 611 0 41
+___lmul: CODE, 548 0 63
+__initialization: CODE, 21 0 0
+_isr: CODE, 25 0 212
+Total: 627
